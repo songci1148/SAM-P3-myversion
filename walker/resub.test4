@@ -1,0 +1,74 @@
+#!/bin/bash
+#PBS -l nodes=4:ppn=8
+#PBS -l walltime=07:45:00
+#PBS -W x=NACCESSPOLICY:SINGLEJOB
+#PBS -m e
+#PBS -M bloss@atmos.washington.edu
+#PBS -N zTTLWalker_P3_aa
+
+scriptdir=/home/disk/eos1/bloss/Runs/Sandbox/Updates/P3Update/SAMUWgh-P3Sokol-2020-12-21
+case=walker
+subcase=test4
+jobfile=$case/resub.$subcase
+logfile=log_$case$subcase
+prmfile=$case/prm.$subcase
+prmloc=$case/prm
+cluster=challenger
+SAMname=./SAM_ADV_SELPPM_SGS_TKE_RAD_RRTM_MICRO_P3MULTI
+
+# Change to correct directory
+\cd $scriptdir
+\cp $case/CaseName ./
+\cp $prmfile $prmloc
+
+if [ ! -e $SAMname ]
+    then
+    echo Could not find $SAMname
+    echo Executable does not exist
+    exit 9
+fi
+# load modules for intel setup
+source /etc/profile.d/modules.sh
+module purge
+module load intel/19.0.2 netcdf/4.6.1.i19 openmpi/3.1.3
+#module load intel/13.1.1 openmpi/1.6.4 netcdf/4.3.0
+#export LD_LIBRARY_PATH=/usr/local/modules/openmpi/1.6.4/intel/13.1.1/lib:${LD_LIBRARY_PATH}
+
+cat >$SAMname.sh <<EOF
+#!/bin/sh
+ulimit -s unlimited
+exec $SAMname
+EOF
+chmod +x $SAMname.sh
+time mpirun $SAMname.sh >> $logfile
+
+cat timing.0 >> $logfile
+
+####time mpirun $SAMname >> $logfile
+
+# Wait for a few seconds to make sure everything is finished
+sleep 5 
+echo $exitstatus exitstatus
+
+# Check to see if model is ready for a restart
+str1=`fgrep TRUE ReadyForRestart`
+
+if [ "$str1" == "TRUE" ]
+    then
+    echo It appears the previous run ended properly and job not yet finished.
+    echo Resubmitting $jobfile
+    cat $prmfile | sed s/nrestart.\*=.\*0/nrestart\ =\ 1/ > temp.namelist
+    \mv temp.namelist $prmfile
+    cat $prmfile | sed s/nrestart.\*=.\*2/nrestart\ =\ 1/ > temp.namelist
+    \mv temp.namelist $prmfile
+    \cp $prmfile $prmloc
+    rsh $cluster "cd $scriptdir; /usr/local/bin/qsub $jobfile"
+    # Remove the file that permits restarts to be submitted
+    rm -f ReadyForRestart
+
+else
+   echo "No restart required (or desired if the run failed)"
+fi
+
+exit 0
+

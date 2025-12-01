@@ -1,0 +1,108 @@
+ &SGS_TKE
+ dosmagor	= .true.,
+/
+
+ &MICRO_P3
+ nCat = 4
+ log_predictNc = .true.
+ aerosol_mode1_number = 120.e6
+ do_output_micro_process_rates = .true.
+/
+
+ &PARAMETERS
+
+ nrestart = 0
+
+ caseid ='2d_4096x192_P3_4Cat_RRTM_aa',
+
+ CEM = .true.,
+ OCEAN = .true.,
+
+ dosgs		= .true.,
+ dodamping 	= .true.,
+ doupperbound  	= .true.,
+ docloud 	= .true.,
+ doprecip 	= .true., 
+ dolongwave	= .true.,
+ doshortwave	= .true.,
+ dosurface 	= .true.,
+ dolargescale 	= .true.,
+ doradforcing   = .false.,
+ dosfcforcing   = .false.,
+ docoriolis 	= .false.,
+ donudging_uv   = .true.,
+ donudging_tq   = .false.,
+
+ doperpetual    = .false.
+ dosolarconstant = .true.,
+ solar_constant  = 685.,
+ zenith_angle    = 51.7,
+
+ doisccp        = .true.,
+ domodis        = .true.,
+ domisr        = .true.,
+
+ day0 = 91.
+
+ ocean_type = 1,
+ delta_sst = 2.
+
+ tauls = 7200.,
+ 
+ SFC_FLX_FXD    = .false.,
+ SFC_TAU_FXD    = .false.,
+
+ dx =   2000.,
+ dy = 	2000.,
+ dt = 	  30.,
+
+ latitude0= 0.,
+ longitude0=-180.,
+ nrad = 6,
+
+ day0=0.0,
+
+ nstop 		= 120000,
+ nprint 	= 120,
+ nstat 		= 120,
+ nstatfrq 	= 20,
+
+ nsave2D	= 720,
+ nsave2Dstart	= 0,
+ nsave2Dend	= 99960480,
+
+ nsave3D	= 720,
+ nsave3Dstart	= 0,
+ nsave3Dend	= 99960480,
+
+ doSAMconditionals = .false.
+ dosatupdnconditionals = .true.
+
+ ncycle0 = 3,
+ ncycle_max = 40,
+ ncycle_min = 3,
+
+ tabs_s = 299.15
+
+/ &end 
+
+ &UWOPTIONS
+
+ doextrapolate_upperbound = .true.
+
+/ &end 
+
+ &MICRO_LINISO
+
+ do_bony_surface_fluxes = .true.,
+
+ init_zsnd =        0.,    5.e3,  10.e3, 12.e3, 40.e3
+ init_hdofrac_snd = 0.9,   0.75,  0.5,   0.4,   0.4
+ init_o18frac_snd = 0.985, 0.965, 0.92,  0.9,   0.9
+
+ doromps_cloudequil = .true.
+
+/ &end
+
+ init_hdofrac_snd = 0.9, 0.9, 0.7, 0.7, 0.5, 
+ init_o18frac_snd = 0.98, 0.98, 0.95, 0.95, 0.9,
