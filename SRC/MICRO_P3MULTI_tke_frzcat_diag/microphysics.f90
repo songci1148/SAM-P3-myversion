@@ -43,6 +43,7 @@ logical :: isallocatedMICRO = .false.
 ! number of microphysical fields and will allocate them in
 ! micro_setparm.  
 integer :: nmicro_fields ! total number of prognostic water vars
+logical :: lath3d
 
 ! This array holds three-dimensional scalar fields for all
 ! microphysical variables.
@@ -225,6 +226,7 @@ subroutine micro_setparm()
       do_wtke,   &            ! BG use w from subgrid scale tke for freezing? 
       depofix,&               ! no depo/sub temp dependence below 220 K
       freezing_3dout, & !BG
+      lath3d, & !BG may 2024
       !BG additional apr 2020
       NumCirrusINP,&  !number of "dust"/ice nucleating particles for cirrus nucleation
       ramp_min,&      !minimum of the INP ramp !BG
@@ -511,6 +513,11 @@ subroutine micro_init()
     ! no QLATENT, no process rates, only REFFC + DGEICE*
  !   nfields3D_micro = 1 + nCat
   !nfields3D_micro = 1 !BG was this the problem of missingQLAT????
+  end if
+  
+  !BG added may 2024
+  if (lath3d) then
+    nfields3D_micro=nfields3D_micro+1
   end if
 
   ! This tells the radiation whether or not to use the cloud effective sizes
@@ -1518,7 +1525,7 @@ subroutine micro_write_fields3D(nfields1)
   integer :: n !BG added
   real(4), dimension(nx,ny,nzm) :: tmp
 
- !BG added
+ if (lath3d) then !BG added switch for RCEMIP, may 2024
   nfields1=nfields1+1
   do k=1,nzm
     do j=1,ny
@@ -1534,24 +1541,42 @@ subroutine micro_write_fields3D(nfields1)
   call compress3D(tmp,nx,ny,nzm,name,long_name,units, &
        save3Dbin,dompi,rank,nsubdomains)
  !BG end
+end if
+
+ !BG added
+ ! nfields1=nfields1+1
+ ! do k=1,nzm
+ !   do j=1,ny
+ !     do i=1,nx
+ !       tmp(i,j,k)=tmtend3d(i,j,k)*86400 ! units: K/s --> K/day
+ !     end do
+ !   end do
+ ! end do
+
+ ! name='QLATENT'
+ ! long_name='Latent heating due to phase changes (divided by Cp)'
+ ! units='K/d'
+ ! call compress3D(tmp,nx,ny,nzm,name,long_name,units, &
+ !      save3Dbin,dompi,rank,nsubdomains)
+ !BG end
 
 !BG commented out
-  nfields1=nfields1+1
-  tmp(:,:,:) = -9999. ! Initialize to missing value
-  do k=1,nzm
-    do j=1,ny
-      do i=1,nx
-        if(CloudLiquidMassMixingRatio(i,j,k).gt.0.) then
-          tmp(i,j,k)=reffc(i,j,k)
-        end if
-      end do
-    end do
-  end do
-  name='REFFC'
-  long_name= 'Cloud liquid effective radius'
-  units='micron'
-  call compress3D(tmp,nx,ny,nzm,name,long_name,units, &
-       save3Dbin,dompi,rank,nsubdomains)
+!  nfields1=nfields1+1
+!  tmp(:,:,:) = -9999. ! Initialize to missing value
+!  do k=1,nzm
+!    do j=1,ny
+!      do i=1,nx
+!        if(CloudLiquidMassMixingRatio(i,j,k).gt.0.) then
+!          tmp(i,j,k)=reffc(i,j,k)
+!        end if
+!      end do
+!    end do
+!  end do
+!  name='REFFC'
+!  long_name= 'Cloud liquid effective radius'
+!  units='micron'
+!  call compress3D(tmp,nx,ny,nzm,name,long_name,units, &
+!       save3Dbin,dompi,rank,nsubdomains)
 
   do ii = 1, nCat
     nfields1=nfields1+1

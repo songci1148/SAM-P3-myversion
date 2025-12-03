@@ -118,6 +118,7 @@ real,public :: ramp_min = 0.1 !INP ramp parameter ramp_min*NumCirrusINP = at low
    logical, public :: do_output_micro_process_rates = .false.
    !currrently not in code   logical, public :: do_output_micro_process_rates_ud = .false. !separate output for updrafts and downdrafts
    logical, public :: freezing_3dout = .false. !3d output of freezing
+   logical, public :: lath3d = .false. !3d output of latent heating from micro code
 
    integer :: nmicro_proc
    integer, parameter :: nmicro_process_rates = 10 !24 ! out of 43
