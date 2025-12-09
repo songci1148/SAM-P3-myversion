@@ -8,7 +8,7 @@
  log_predictNc = .false.                 !note: if on grid coarser than e.g. 1 km, maybe just prescribe it with Nc0!
  aerosol_mode1_number = 120.e6          !see in code
  do_output_micro_process_rates = .true. !see in code what gets out if this is set to true
- Nc0 = 100.                             !note: prescribed CDNC, used if log_predictNC is set to false
+ Nc0 = 200.                             !note: prescribed CDNC, used if log_predictNC is set to false
  MaxTotalIceNumber = 10.e6              !note: much more than in the default scheme; and yes we need that so!
  NumCirrusSulf = 20.                    !number of sulfate aerosol per unit of cubic centimeter
  NumCirrusINP = 20.e-3                  !number of hardcoded cirrus INPs (or its maximum value if ramp_min is <1)
@@ -22,8 +22,8 @@
  no_lphom_ice_nucleation = .true.       !if true, only HOM from Liu & Penner active
  no_cirrus_mohler_ice_nucleation=.true. !if false, use some older code, where HET occured but was not competing with HOM (not very realistic!)
  do_wtke = .true.                       !use the subgrid scale tke to boost the updraft in cirrus nucleation scheme (impact non-negligible in resolutions up to ~500x500m or so)
-
- freezing_3dout = .true.               !3d freezing rates in output?
+ lath3d = .true.
+ freezing_3dout = .false.               !3d freezing rates in output?
 /
 
 &UWOPTIONS
@@ -39,7 +39,7 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
  nrestart = 0,       !1 if you start from a restart file
  nrestart_skip=5,    !write restart file every n+1th time a stat file computed
 
- caseid ='P3_256x256x128_Nc0_100_frq_30min2D_1hr3D_lowRH_3km_QLAT_BQ_org',
+ caseid ='P3_256x256x128_Nc0_200_frq_30min2D_1hr3D_lowRH_3km_QLAT_lathON',
 
  CEM = .true.,
  OCEAN = .true.,

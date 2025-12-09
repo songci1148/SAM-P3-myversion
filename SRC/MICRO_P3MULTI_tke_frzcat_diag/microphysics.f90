@@ -43,7 +43,7 @@ logical :: isallocatedMICRO = .false.
 ! number of microphysical fields and will allocate them in
 ! micro_setparm.  
 integer :: nmicro_fields ! total number of prognostic water vars
-logical :: lath3d
+! logical :: lath3d
 
 ! This array holds three-dimensional scalar fields for all
 ! microphysical variables.
@@ -116,7 +116,7 @@ real, allocatable, dimension(:,:) :: mkwle, &  ! resolved vertical flux
 ! number of fields output from micro_write_fields2D, micro_write_fields3D
 integer :: nfields2D_micro=0
 !BG integer :: nfields3D_micro=0
-integer :: nfields3D_micro=1 !1 ! for QLATENT (BG)
+integer :: nfields3D_micro=0 !1 ! for QLATENT (BG)
 !------------------------------------------------------------------
 
 
