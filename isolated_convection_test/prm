@@ -39,13 +39,13 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
  nrestart = 0,       !1 if you start from a restart file
  nrestart_skip=5,    !write restart file every n+1th time a stat file computed
 
- caseid ='P3_256x256x128_Nc0_200_frq_30min2D_1hr3D_295_SST_lathON',
+ caseid ='P3_256x256x128_Nc0_200_frq_30min2D_1hr3D_300_SST_lathON',
 
  CEM = .true.,
  OCEAN = .true.,
 
  ocean_type = 0, ! ocean_type=1 is sinusoidal SST in x direction
- tabs_s = 303.15,  ! when ocean_type is 1 or 2, this is the mean SST
+ tabs_s = 300.0,  ! when ocean_type is 1 or 2, this is the mean SST
 
  bubble_x0 = 128000.,      ! center (nx*dx/2)
  bubble_y0 = 128000.,
