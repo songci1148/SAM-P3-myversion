@@ -39,7 +39,7 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
  nrestart = 0,       !1 if you start from a restart file
  nrestart_skip=5,    !write restart file every n+1th time a stat file computed
 
- caseid ='P3_256x256x128_Nc0_200_frq_30min2D_1hr3D_lowRH_3km_QLAT_lathON',
+ caseid ='P3_256x256x128_Nc0_200_frq_30min2D_1hr3D_295_SST_lathON',
 
  CEM = .true.,
  OCEAN = .true.,
