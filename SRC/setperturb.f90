@@ -1,4 +1,3 @@
-
 subroutine setperturb
 
 !  Random noise
@@ -13,6 +12,9 @@ implicit none
 integer i,j,k,ptype,it,jt
 real rrr,ranf_
 real xxx,yyy,zzz
+
+! --- variables used by case(30) (must be declared up here)
+real xc, yc, rxy, noise
 
 call ranset_(3*rank)
 
@@ -124,7 +126,6 @@ select case (ptype)
 
   case(6)  ! GCSS Lagragngian ASTEX
 
-
      do k=1,nzm
       do j=1,ny
        do i=1,nx
@@ -137,7 +138,6 @@ select case (ptype)
        end do
       end do
      end do
-
 
   case(22) !bloss: Try to make a general perturbation for boundary layer cloud simulations.
            ! Add noise everywhere that the water mass mixing ratio is more than half
@@ -156,7 +156,53 @@ select case (ptype)
       end do
      end do
 
-  case(-1) 
+  case(30)
+    !============================================================
+    ! Isolated anvil cloud perturbation (SAM-consistent)
+    !
+    ! Adds weak random temperature noise (±0.01 K) ONLY in a
+    ! prescribed anvil region:
+    !   base = 8 km, top = 13 km, radius = 30 km,
+    ! centered in the 256-km square domain.
+    !
+    ! NOTE: This does NOT initialize ice condensate. In your SAM build,
+    ! ice mass/number indices are not exposed here, so the cloud must
+    ! already exist (typically via restart).
+    !============================================================
+
+    ! Domain center (global coordinates)
+    xc = 0.5 * nx * dx
+    yc = 0.5 * ny * dy
+
+    call task_rank_to_index(rank,it,jt)
+
+    do k = 1, nzm
+      zzz = z(k)
+
+      if (zzz .ge. 8000.0 .and. zzz .le. 13000.0) then
+
+        do j = 1, ny
+          yyy = dy * (j + jt)
+
+          do i = 1, nx
+            xxx = dx * (i + it)
+
+            rxy = sqrt( (xxx - xc)**2 + YES3D*(yyy - yc)**2 )
+            if (rxy .le. 30000.0) then
+            ! Weak temperature perturbation (±0.01 K)
+            noise = 0.01 * (2.0*ranf_() - 1.0)
+            t(i,j,k) = t(i,j,k) + noise
+
+            ! VERY weak water vapor perturbation (safe, SAM-consistent)
+            micro_field(i,j,k,index_water_vapor) = &
+                  micro_field(i,j,k,index_water_vapor) * (1.0 + 1.0e-6*noise)
+            endif
+          end do
+        end do
+      endif
+    end do
+
+  case(-1)
     !bloss: no perturbation
 
   case default
@@ -166,6 +212,4 @@ select case (ptype)
 
 end select
 
-
-end
-
+end subroutine setperturb

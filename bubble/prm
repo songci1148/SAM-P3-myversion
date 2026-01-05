@@ -8,7 +8,7 @@
  log_predictNc = .false.                 !note: if on grid coarser than e.g. 1 km, maybe just prescribe it with Nc0!
  aerosol_mode1_number = 120.e6          !see in code
  do_output_micro_process_rates = .true. !see in code what gets out if this is set to true
- Nc0 = 100.                             !note: prescribed CDNC, used if log_predictNC is set to false
+ Nc0 = 1600.                             !note: prescribed CDNC, used if log_predictNC is set to false
  MaxTotalIceNumber = 10.e6              !note: much more than in the default scheme; and yes we need that so!
  NumCirrusSulf = 20.                    !number of sulfate aerosol per unit of cubic centimeter
  NumCirrusINP = 20.e-3                  !number of hardcoded cirrus INPs (or its maximum value if ramp_min is <1)
@@ -39,7 +39,7 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
  nrestart = 0,       !1 if you start from a restart file
  nrestart_skip=5,    !write restart file every n+1th time a stat file computed
 
- caseid ='new_frz_P3_256x256x128_Nc0_100_bb_dq5_nz128_12hr',
+ caseid ='new_frz_P3_256x256x128_Nc0_1600',
 
  CEM = .true.,
  OCEAN = .true.,
