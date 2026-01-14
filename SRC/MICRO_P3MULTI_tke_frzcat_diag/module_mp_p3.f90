@@ -891,8 +891,8 @@ END subroutine p3_init
                                           diag_rhopo,diag_effi
 
    real, dimension(its:ite) :: pcprt_liq,pcprt_sol
-   real                     :: dum1,dum2
-   integer                  :: i,k,j
+   real                     :: dum1,dum2, dum_sum, qitot_sum
+   integer                  :: i,k,j, iice
    integer, parameter       :: n_diag_3d = 1         ! number of user-defined diagnostic fields
    integer, parameter       :: n_diag_2d = 1         ! number of user-defined diagnostic fields
 
@@ -1010,19 +1010,17 @@ END subroutine p3_init
 !            end if
 
             ! for the combined effective radius, we need to approriately weight by mass and projected area
-            if (qitot(i,k,1).ge.qsmall) then
-               dum1=qitot(i,k,1)/diag_effi(i,k,1)
-            else
-               dum1=0.
-            end if
-            if (qitot(i,k,2).ge.qsmall) then
-               dum2=qitot(i,k,2)/diag_effi(i,k,2)
-            else
-               dum2=0.
-            end if
+            dum_sum = 0.
+            qitot_sum = 0.
+            do iice = 1, n_iceCat
+               if (qitot(i,k,iice).ge.qsmall) then
+                  dum_sum = dum_sum + qitot(i,k,iice)/diag_effi(i,k,iice)
+                  qitot_sum = qitot_sum + qitot(i,k,iice)
+               end if
+            end do
             diag_effi_3d(i,k,j)=25.e-6  ! set to default 25 microns
-            if (qitot(i,k,1).ge.qsmall.or.qitot(i,k,2).ge.qsmall) then
-               diag_effi_3d(i,k,j)=(qitot(i,k,1)+qitot(i,k,2))/(dum1+dum2)
+            if (qitot_sum.ge.qsmall) then
+               diag_effi_3d(i,k,j)=qitot_sum / dum_sum
             end if
 
             end do
