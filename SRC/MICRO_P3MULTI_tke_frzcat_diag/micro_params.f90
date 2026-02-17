@@ -121,53 +121,44 @@ real,public :: ramp_min = 0.1 !INP ramp parameter ramp_min*NumCirrusINP = at low
    logical, public :: lath3d = .false. !3d output of latent heating from micro code
 
    integer :: nmicro_proc
-   integer, parameter :: nmicro_process_rates = 10 !24 ! out of 43
+   integer, parameter :: nmicro_process_rates = 32 !24 ! out of 43
    !no need for that: integer, parameter :: nmicro_process_rates_warm = 14
    character(len=8), dimension(nmicro_process_rates), parameter, public :: &
-        micro_process_rate_names = (/ &
-! liquid-phase microphysical process rates:
-!  (all Q process rates in kg kg-1 s-1)
-!  (all N process rates in # kg-1)
- !     'qrcon    ', & ! rain condensation
- !     'qcacc    ', & ! cloud droplet accretion by rain
- !     'qcaut    ', & ! cloud droplet autoconversion to rain
-  !   'ncacc    '/)!, & ! change in cloud droplet number from accretion by rain
-   !  'ncautc   ', & ! change in cloud droplet number from autoconversion
-   !  'ncslf    ', & ! change in cloud droplet number from self-collection
-   !  'nrslf    ', & ! change in rain number from self-collection
-   !  'ncnuc    ', & ! change in cloud droplet number from activation of CCN
-  !    'qccon    ', & ! cloud droplet condensation
-   !   'qcnuc    ', & ! activation of cloud droplets from CCN
-   !   'qrevp    ', & ! rain evaporation
-   !   'qcevp    ', & ! cloud droplet evaporation
-   !  'nrevp    ', & ! change in rain number from evaporation
-   !  'ncautr   ', & ! change in rain number from autoconversion of cloud water
-! i!ce-phase microphysical process rates:
-!  !(all Q process rates in kg kg-1 s-1)
-!  !(all N process rates in # kg-1)
-   !   'qccol     ', & ! collection of cloud water by ice
-   !   'qwgrth    ', & ! wet growth rate
-   !   'qidep     ', & ! vapor deposition
-   !   'qrcol     ', & ! collection rain mass by ice
-   !   'qinuc     ', & ! deposition/condensation freezing nuc !for T< -15 C and Sice> 5%, not really sure how
-   !  'nccol     ', & ! change in cloud droplet number from collection by ice
-   !  'nrcol     ', & ! change in rain number from collection by ice
-   !  'ninuc     ', & ! change in ice number from deposition/cond-freezing nucleation
-   !   'qisub     ', & ! sublimation of ice
-   !   'qimlt     ', &!, & ! melting of ice
-   !   'qcrfrz    ', &! /) ! freezing of cloud droplets (qinuc + qchetc + qcheti) and rain (qrhti+qrhetc) !BG
-     !number rates
-     'ninuc     ',& !deposition freezing from Meyers/ in mixed phase
-     'ninuc2     ',& ! Mohler deposition freezing at cirrus level, if turned on
-     'ninuc3    ',&  ! LP freezing, competition hom, het, preex at cirrus conditions
-     !contact frz turned on right now
-     'ncheti    ', & ! immersion freezing droplets
-     'nrheti    ', & ! immersion freezing rain
-     'nimul     ', & ! Hallet Mossop/ice multiplication from rime-splintering (not turned on?)
-     'nimlt     ', & ! melting of ice
-     'nisub     ', & ! change in ice number from sublimation
-     'nislf     ', & ! change in ice number from collection within a category
-     'nrchomi   '/) ! homog freezing of cloud droplets and rain, should be last!!!
+      micro_process_rate_names = (/ &
+   ! liquid/ice mass process rates (Q, kg kg-1 s-1)
+        'qrcon    ', & ! rain condensation
+        'qcacc    ', & ! cloud droplet accretion by rain
+        'qcaut    ', & ! cloud droplet autoconversion to rain
+        'qccon    ', & ! cloud droplet condensation
+        'qcnuc    ', & ! activation of cloud droplets from CCN
+        'qrevp    ', & ! rain evaporation
+        'qcevp    ', & ! cloud droplet evaporation
+        'qccol    ', & ! collection of cloud water by ice
+        'qwgrth   ', & ! wet growth rate
+        'qidep    ', & ! vapor deposition
+        'qrcol    ', & ! collection rain mass by ice
+        'qinuc    ', & ! deposition/condensation freezing nucleation (mixed phase)
+        'qisub    ', & ! sublimation of ice
+        'qimlt    ', & ! melting of ice
+        'qcrfrz   ', & ! freezing of cloud droplets and rain (mixed phase)
+        'qinuc23  ', & ! cirrus in-situ freezing (qinuc2+qinuc3)
+        'qcheti   ', & ! immersion freezing of cloud droplets
+        'qrhetc   ', & ! contact freezing of rain
+        'qrheti   ', & ! immersion freezing of rain
+        'qcshd    ', & ! rain mass from shedding
+        'qcmul    ', & ! rime-splintering of cloud water
+        'qrmul    ', & ! rime-splintering of rain
+   ! number rates (N, # kg-1 s-1)
+        'ninuc    ', & ! deposition freezing from Meyers/ in mixed phase
+        'ninuc2   ', & ! Mohler deposition freezing at cirrus level, if turned on
+        'ninuc3   ', & ! LP freezing, competition hom/het/preex at cirrus conditions
+        'ncheti   ', & ! immersion freezing droplets
+        'nrheti   ', & ! immersion freezing rain
+        'nimul    ', & ! Hallet Mossop/ice multiplication from rime-splintering
+        'nimlt    ', & ! melting of ice
+        'nisub    ', & ! change in ice number from sublimation
+        'nislf    ', & ! change in ice number from collection within a category
+        'nrchomi  '/) ! homog freezing of cloud droplets and rain
 
    !  'ncrfrz    ', & ! number freezing of cloud droplets (qinuc + qchetc + qcheti) and rain (qrhti+qrhetc) !BG
    !  'nchetc    ', & ! contact freezing droplets
@@ -185,15 +176,36 @@ real,public :: ramp_min = 0.1 !INP ramp parameter ramp_min*NumCirrusINP = at low
 
    character(len=80), dimension(nmicro_process_rates), parameter, public :: &
         micro_process_rate_longnames = (/ &
-     !number rates in units output per timestep per m-3
-     'ninuc depo frz mixed phase',& !deposition freezing from Meyers/ in mixed phase
-     'ninuc2 Mohler depo frz at cirrus     ',& ! Mohler deposition freezing at cirrus level, if turned on
-     'ninuc3 LP cirrus freezing    ',&  ! LP freezing, competition hom, het, preex at cirrus conditions !contact frz turned on right now
-     'ncheti immersion frz droplets    ', & ! immersion freezing droplets
-     'nrheti immersion frz rain   ', & ! immersion freezing rain
-     'nimul rime-splintering     ', & ! Hallet Mossop/ice multiplication from rime-splintering (not turned on?)
-     'nimlt melting    ', & ! melting of ice
-     'nisub sublimation    ', & ! change in ice number from sublimation
-     'nislf self-collection    ', & ! change in ice number from collection within a category
-     'nrchomi hom frz of droplets and rain  '/) ! homog freezing of cloud droplets and rain, should be last!!!
+     'qrcon rain condensation', &
+     'qcacc cloud accretion by rain', &
+     'qcaut cloud autoconversion to rain', &
+     'qccon cloud condensation', &
+     'qcnuc activation from CCN', &
+     'qrevp rain evaporation', &
+     'qcevp cloud evaporation', &
+     'qccol cloud collection by ice', &
+     'qwgrth wet growth', &
+     'qidep vapor deposition on ice', &
+     'qrcol rain collection by ice', &
+     'qinuc depo/cond frz mixed phase', &
+     'qisub ice sublimation', &
+     'qimlt ice melting', &
+     'qcrfrz cloud+rain freezing', &
+     'qinuc23 cirrus in-situ freezing', &
+     'qcheti immersion frz droplets', &
+     'qrhetc contact frz rain', &
+     'qrheti immersion frz rain', &
+     'qcshd rain from shedding', &
+     'qcmul rime-splintering cloud', &
+     'qrmul rime-splintering rain', &
+     'ninuc depo frz mixed phase', &
+     'ninuc2 Mohler depo frz cirrus', &
+     'ninuc3 LP cirrus freezing', &
+     'ncheti immersion frz droplets', &
+     'nrheti immersion frz rain', &
+     'nimul rime-splintering', &
+     'nimlt melting', &
+     'nisub sublimation', &
+     'nislf self-collection', &
+     'nrchomi hom frz droplets+rain' /)
  end module micro_params
