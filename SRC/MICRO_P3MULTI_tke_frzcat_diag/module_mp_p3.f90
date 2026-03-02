@@ -3747,89 +3747,8 @@ endif !ice nucleation BG or standard P3
 ! vapor -- not needed, since all sinks already have limits imposed and the sum, therefore,
 !          cannot possibly overdeplete qv
 
-!----------------------------------------------------------------------
-! homogeneous freezing of cloud and rain (T < -37C)
-!
-! CS Make homogeneous freezing a true tendency (qchomi/qrhomi, kg/kg/s) so it can be
-! included explicitly in the limiter source/sink budgets and applied consistently
-! with other microphysical tendencies.
-!
-! NOTE: This only *computes* tendencies. State updates happen below in the common
-! prognostic update section.
-       if (t(i,k).lt.236.15) then
-
-          ! For destination selection (when frzmodes=.false.), estimate mean-mass
-          ! diameters for existing ice categories.
-          if (nCat.gt.1 .and. .not. frzmodes) then
-             diam_ice(i,k,:) = 0.
-             do iice = 1,nCat
-                if (qitot(i,k,iice).ge.qsmall) then
-                   dum1 = max(nitot(i,k,iice),nsmall)
-                   dum2 = 500. ! ice density
-                   diam_ice(i,k,iice) = ((qitot(i,k,iice)*6.)/(dum1*dum2*pi))**thrd
-                endif
-             enddo
-          endif
-
-          if (qc(i,k).ge.qsmall) then
-             if (no_ice_nucleation .or. no_hom_ice_nucleation) then
-                Q_nuc = 0.
-                N_nuc = 0.
-             else
-                Q_nuc = qc(i,k)
-                N_nuc = max(nc(i,k),nsmall)
-             end if
-
-             if (Q_nuc.gt.0.) then
-                if (nCat.gt.1) then
-                   if (frzmodes) then
-                      iice_dest = 6
-                   else
-                      dum1  = 900.
-                      D_new = ((Q_nuc*6.)/(pi*dum1*N_nuc))**thrd
-                      call icecat_destination(qitot(i,k,:)*iSCF(k),diam_ice(i,k,:),D_new,deltaD_init,iice_dest)
-                      if (global_status /= STATUS_OK) return
-                   endif
-                else
-                   iice_dest = 1
-                endif
-
-                qchomi(iice_dest) = Q_nuc*odt
-                nchomi(iice_dest) = N_nuc*odt
-             endif
-          endif
-
-          if (qr(i,k).ge.qsmall) then
-             if (no_ice_nucleation .or. no_hom_ice_nucleation) then
-                Q_nuc = 0.
-                N_nuc = 0.
-             else
-                Q_nuc = qr(i,k)
-                N_nuc = max(nr(i,k),nsmall)
-             end if
-
-             if (Q_nuc.gt.0.) then
-                if (nCat.gt.1) then
-                   if (frzmodes) then
-                      iice_dest = 6
-                   else
-                      dum1  = 900.
-                      D_new = ((Q_nuc*6.)/(pi*dum1*N_nuc))**thrd
-                      call icecat_destination(qitot(i,k,:)*iSCF(k),diam_ice(i,k,:),D_new,deltaD_init,iice_dest)
-                      if (global_status /= STATUS_OK) return
-                   endif
-                else
-                   iice_dest = 1
-                endif
-
-                qrhomi(iice_dest) = Q_nuc*odt
-                nrhomi(iice_dest) = N_nuc*odt
-             endif
-          endif
-       endif
-
 ! cloud
-       sinks   = (qcaut+qcacc+sum(qccol)+qcevp+sum(qchetc)+sum(qcheti)+sum(qcshd)+sum(qchomi))*dt
+       sinks   = (qcaut+qcacc+sum(qccol)+qcevp+sum(qchetc)+sum(qcheti)+sum(qcshd))*dt
        sources = qc(i,k) + (qccon+qcnuc)*dt
        if (sinks.gt.sources .and. sinks.ge.1.e-20) then
           ratio  = sources/sinks
@@ -3839,13 +3758,11 @@ endif !ice nucleation BG or standard P3
           qccol  = qccol*ratio
           qcheti = qcheti*ratio
           qcshd  = qcshd*ratio
-          qchomi = qchomi*ratio ! CS added for hom freezing of cloud
-          !nchomi = nchomi*ratio !CS Hom-freezing: its number transfer is directly coupled to “freeze existing droplets/raindrops”
          !qchetc = qchetc*ratio
        endif
 
 ! rain
-       sinks   = (qrevp+sum(qrcol)+sum(qrhetc)+sum(qrheti)+sum(qrmul)+sum(qrhomi))*dt
+       sinks   = (qrevp+sum(qrcol)+sum(qrhetc)+sum(qrheti)+sum(qrmul))*dt
        sources = qr(i,k) + (qrcon+qcaut+qcacc+sum(qimlt)+sum(qcshd))*dt
        if (sinks.gt.sources .and. sinks.ge.1.e-20) then
           ratio  = sources/sinks
@@ -3853,8 +3770,6 @@ endif !ice nucleation BG or standard P3
           qrcol  = qrcol*ratio
           qrheti = qrheti*ratio
           qrmul  = qrmul*ratio
-          qrhomi = qrhomi*ratio ! CS added for hom freezing of rain
-         !nrhomi = nrhomi*ratio
          !qrhetc = qrhetc*ratio
        endif
 
@@ -3862,7 +3777,7 @@ endif !ice nucleation BG or standard P3
        do iice = 1,nCat
           sinks   = (qisub(iice)+qimlt(iice))*dt  !BG added qinuc2 and qinuc3
           sources = qitot(i,k,iice) + (qidep(iice)+qinuc(iice)+qinuc2(iice)+qinuc3(iice)+qrcol(iice)+qccol(iice)+  &
-                              qrhetc(iice)+qrheti(iice)+qchetc(iice)+qcheti(iice)+qrmul(iice)+qchomi(iice)+qrhomi(iice))*dt !CS added qchomi and qrhomi
+                    qrhetc(iice)+qrheti(iice)+qchetc(iice)+qcheti(iice)+qrmul(iice))*dt
           do catcoll = 1,nCat
             !category interaction leading to source for iice category
              sources = sources + qicol(catcoll,iice)*dt
@@ -3887,16 +3802,16 @@ endif !ice nucleation BG or standard P3
    !-- ice-phase dependent processes:
        iice_loop2: do iice = 1,nCat
 
-          qc(i,k) = qc(i,k) + (-qchetc(iice)-qcheti(iice)-qccol(iice)-qcshd(iice)-qchomi(iice))*dt !CS added qchomi for hom freezing of cloud
+          qc(i,k) = qc(i,k) + (-qchetc(iice)-qcheti(iice)-qccol(iice)-qcshd(iice))*dt
           if (log_predictNc) then
-             nc(i,k) = nc(i,k) + (-nccol(iice)-nchetc(iice)-ncheti(iice)-nchomi(iice))*dt !CS added nchomi for hom freezing of cloud 
+             nc(i,k) = nc(i,k) + (-nccol(iice)-nchetc(iice)-ncheti(iice))*dt
           endif
 
           qr(i,k) = qr(i,k) + (-qrcol(iice)+qimlt(iice)-qrhetc(iice)-qrheti(iice)+            &
-                    qcshd(iice)-qrmul(iice)-qrhomi(iice))*dt ! CS added qrhomi for hom freezing of rain
+                    qcshd(iice)-qrmul(iice))*dt
         ! apply factor to source for rain number from melting of ice, (ad-hoc
         ! but accounts for rapid evaporation of small melting ice particles)
-          nr(i,k) = nr(i,k) + (-nrcol(iice)-nrhetc(iice)-nrheti(iice)-nrhomi(iice)+nmltratio*nimlt(iice)+  & ! CS added nrhomi for hom freezing of rain
+          nr(i,k) = nr(i,k) + (-nrcol(iice)-nrhetc(iice)-nrheti(iice)+nmltratio*nimlt(iice)+  &
                     nrshdr(iice)+ncshdc(iice))*dt
 
           if (qitot(i,k,iice).ge.qsmall) then
@@ -3909,15 +3824,15 @@ endif !ice nucleation BG or standard P3
           endif
 
           dum             = (qrcol(iice)+qccol(iice)+qrhetc(iice)+qrheti(iice)+          &
-                            qchetc(iice)+qcheti(iice)+qrmul(iice)+qchomi(iice)+qrhomi(iice))*dt ! CS added qchomi and qrhomi for hom freezing of cloud and rain
+                            qchetc(iice)+qcheti(iice)+qrmul(iice))*dt
           qitot(i,k,iice) = qitot(i,k,iice) + (qidep(iice)+qinuc(iice)+qinuc2(iice)+qinuc3(iice))*dt + dum !BG added qinuc2/3
           qirim(i,k,iice) = qirim(i,k,iice) + dum
           birim(i,k,iice) = birim(i,k,iice) + (qrcol(iice)*inv_rho_rimeMax+qccol(iice)/  &
                             rhorime_c(iice)+(qrhetc(iice)+qrheti(iice)+qchetc(iice)+     &
-                            qcheti(iice)+qrmul(iice)+qchomi(iice)+qrhomi(iice))*inv_rho_rimeMax)*dt     !BG added ninuc2/3 ! CS added qchomi and qrhomi for hom freezing of cloud and rain
+                            qcheti(iice)+qrmul(iice))*inv_rho_rimeMax)*dt     !BG added ninuc2/3
           nitot(i,k,iice) = nitot(i,k,iice) + (ninuc(iice)+ninuc2(iice)+ninuc3(iice)-nimlt(iice)-nisub(iice)-      &
                             nislf(iice)+nrhetc(iice)+nrheti(iice)+nchetc(iice)+          &
-                            ncheti(iice)+nimul(iice)+nchomi(iice)+nrhomi(iice))*dt !BG added ninuc2/3 ! CS added nchomi and nrhomi for hom freezing of cloud and rain
+                            ncheti(iice)+nimul(iice))*dt
 
           interactions_loop: do catcoll = 1,nCat
         ! add ice-ice category interaction collection tendencies
@@ -3970,7 +3885,7 @@ endif !ice nucleation BG or standard P3
         ! very small and the homogeneous temp. freezing threshold is approximate anyway.
           th(i,k) = th(i,k) + invexn(i,k)*((qidep(iice)-qisub(iice)+qinuc(iice))*      &
                               xxls(i,k)*inv_cp +(qrcol(iice)+qccol(iice)+qchetc(iice)+ &
-                              qcheti(iice)+qrhetc(iice)+qrheti(iice)+qchomi(iice)+qrhomi(iice)+                  &
+                              qcheti(iice)+qrhetc(iice)+qrheti(iice)+                  &
                               qrmul(iice)-qimlt(iice))*                                &
                               xlf(i,k)*inv_cp)*dt
 
@@ -4094,8 +4009,7 @@ ncrfrz = ninuc+nchetc+ncheti+nrhetc+nrheti  !+ ninuc2+ninuc3 !BG sum of all free
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qrmul(:)) ! rime-splintering of rain [kg/kg/s]
   
     !BG 3d number rates, focused on ice/freezing
-   idx = idx + 1
-   micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc(:))  !(some sort of) deposition freezing [mixed-phase]
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc(:))  !(some sort of) deposition freezing [mixed-phase]
     idx = idx + 1
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc2(:)) !cirrus freezing from Mohler (if enabled) [cirrus]
     idx = idx + 1
@@ -4109,33 +4023,12 @@ ncrfrz = ninuc+nchetc+ncheti+nrhetc+nrheti  !+ ninuc2+ninuc3 !BG sum of all free
     idx = idx + 1
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nimlt(:)) ! melting of ice [#/m3]
     idx = idx + 1
-   micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nisub(:)) ! sublimation of ice [#/m3] I think all in units /s due to multipl with odt
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nisub(:)) ! sublimation of ice [#/m3] I think all in units /s due to multipl with odt
     idx = idx + 1
-   micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nislf(:)) ! change in ice number from collection within a category [#/m3]
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrhomi(:))+SUM(nchomi(:)) ! homog freezing of cloud droplets and rain
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qinuc2(:)) ! cirrus heterogeneous in-situ freezing mass
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qinuc3(:)) ! cirrus in-situ freezing mass (LP)
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qcrfrz(:)) + SUM(qinuc2(:)) ! total heterogeneous freezing mass
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qrhomi(:)) + SUM(qchomi(:)) ! total homogeneous freezing mass
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qchomi(:)) ! homogeneous freezing mass of cloud droplets
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ncrfrz(:)) ! total freezing number (cloud+rain)
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nchetc(:)) ! droplet contact freezing number
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrhetc(:)) ! rain contact freezing number
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrshdr(:)) ! rain number source from shedding
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ncshdc(:)) ! rain number source from shedding (cloud-ice)
-      idx = idx + 1
-      micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(rhorime_c(:))/REAL(nCat) ! mean rime density from cloud
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nislf(:)) ! change in ice number from collection within a category [#/m3]
+   idx = idx + 1
+   micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nchomi(:)) + SUM(nrhomi(:)) ! hom frz of droplets and rain [#/m3]
+    fidx = idx !final idx
 endif
 !SAM additions end
 
@@ -4638,7 +4531,143 @@ endif
                       SCPF_on,scpf_pfrac,scpf_resfact,quick=.true.)
 
 !.......................................
-! homogeneous freezing is handled as tendencies inside the main microphysics k-loop.
+! homogeneous freezing of cloud and rain
+
+    k_loop_fz:  do k = kbot,ktop,kdir
+
+    !BG initalize here, where also rates computed!!!!
+    qcrfrz_hom=0.;   ncrfrz_hom=0. !BG added, sum of all freezing rates
+    qchomi  = 0.;  nchomi  = 0.; qrhomi=0.;  nrhomi=0. !BG added, for hom frz
+
+    ! compute mean-mass ice diameters (estimated; rigorous approach to be implemented later)
+       diam_ice(i,k,:) = 0.
+       do iice = 1,nCat
+          if (qitot(i,k,iice).ge.qsmall) then
+             dum1 = max(nitot(i,k,iice),nsmall)
+             dum2 = 500. !ice density
+             diam_ice(i,k,iice) = ((qitot(i,k,iice)*6.)/(dum1*dum2*pi))**thrd
+          endif
+       enddo  !iice loop
+
+       if (qc(i,k).ge.qsmall .and. t(i,k).lt.236.15) then !below -37 deg c freeze droplets
+          !BG
+          if (no_ice_nucleation .or. no_hom_ice_nucleation) then
+            Q_nuc = 0.
+            N_nuc = 0.
+          else
+            Q_nuc = qc(i,k)
+            N_nuc = max(nc(i,k),nsmall)
+            !N_nuc = min(N_nuc,10.e+6*inv_rho(i,k)*SCF(k)) !BG set max to 10000 per L or 10/cc 
+            
+          end if
+          !BG end
+          if (nCat>1) then
+             if (frzmodes) then !BG freezing separate category separate source
+                iice_dest=6  !HOM frz of cloud and rain= Cat 6
+             else
+               !determine destination ice-phase category:
+               dum1  = 900.     !density of new ice
+               D_new = ((Q_nuc*6.)/(pi*dum1*N_nuc))**thrd
+               call icecat_destination(qitot(i,k,:)*iSCF(k),diam_ice(i,k,:),D_new,deltaD_init,iice_dest)
+
+               if (global_status /= STATUS_OK) return
+             endif !BG, frzmodes
+          else !nCat=1
+             iice_dest = 1
+          endif
+          qirim(i,k,iice_dest) = qirim(i,k,iice_dest) + Q_nuc
+          qitot(i,k,iice_dest) = qitot(i,k,iice_dest) + Q_nuc
+          birim(i,k,iice_dest) = birim(i,k,iice_dest) + Q_nuc*inv_rho_rimeMax
+          nitot(i,k,iice_dest) = nitot(i,k,iice_dest) + N_nuc
+          th(i,k) = th(i,k) + th(i,k)/t(i,k)*Q_nuc*xlf(i,k)*inv_cp
+          qc(i,k) = 0.  != qc(i,k) - Q_nuc
+          nc(i,k) = 0.  != nc(i,k) - N_nuc
+         !BG added for tendency output -> why not done as for het? no separate
+         !homfrz term?
+          !qchomi(iice_dest) = Q_nuc !BG test =0. !Q_nuc
+          !nchomi(iice_dest) = N_nuc !BG test =0. !N_nuc
+          !BG
+          if (no_ice_nucleation .or. no_hom_ice_nucleation) then
+            qchomi(iice_dest) = 0.
+            nchomi(iice_dest) = 0.
+          else
+            !if (Q_nuc .gt. 1e-12) then
+            !    print*,'nucleate,Q_nuc=',Q_nuc
+            !endif
+            !BG here needs to add multiplication with inv of model timestep: 
+            !old qchomi(iice_dest) = Q_nuc!?*odt
+            !old nchomi(iice_dest) = N_nuc!?*odt
+            qchomi(iice_dest) = Q_nuc*odt
+            nchomi(iice_dest) = N_nuc*odt
+          end if
+          !BG end
+
+       endif
+
+       if (qr(i,k).ge.qsmall .and. t(i,k).lt.236.15) then
+
+          !BG
+          if (no_ice_nucleation .or. no_hom_ice_nucleation) then
+            Q_nuc = 0.
+            N_nuc = 0.
+          else
+            Q_nuc = qr(i,k)
+            N_nuc = max(nr(i,k),nsmall)
+            !N_nuc = min(N_nuc,10.e+6*inv_rho(i,k)*SCF(k)) !BG set max at 10/cc
+          end if
+          !BG end
+
+          if (nCat>1) then
+             if (frzmodes) then !BG freezing separate category separate source
+                iice_dest=6  !hom frz of ice and rain, put together = Cat 6
+             else
+               !determine destination ice-phase category:
+               dum1  = 900.     !density of new ice
+               D_new = ((Q_nuc*6.)/(pi*dum1*N_nuc))**thrd
+               call icecat_destination(qitot(i,k,:)*iSCF(k),diam_ice(i,k,:),D_new,deltaD_init,iice_dest)
+
+               if (global_status /= STATUS_OK) return
+             endif !BG, frzmodes
+          else !nCat=1
+             iice_dest = 1
+          endif
+          qirim(i,k,iice_dest) = qirim(i,k,iice_dest) + Q_nuc
+          qitot(i,k,iice_dest) = qitot(i,k,iice_dest) + Q_nuc
+          birim(i,k,iice_dest) = birim(i,k,iice_dest) + Q_nuc*inv_rho_rimeMax
+          nitot(i,k,iice_dest) = nitot(i,k,iice_dest) + N_nuc
+          th(i,k) = th(i,k) + th(i,k)/t(i,k)*Q_nuc*xlf(i,k)*inv_cp
+          qr(i,k) = 0.  ! = qr(i,k) - Q_nuc
+          nr(i,k) = 0.  ! = nr(i,k) - N_nuc
+
+          !qrhomi(iice_dest) = Q_nuc !BG
+          !nrhomi(iice_dest) = N_nuc !BG
+       !endif
+          !BG
+          if (no_ice_nucleation .or. no_hom_ice_nucleation) then
+            qrhomi(iice_dest) = 0.
+            nrhomi(iice_dest) = 0.
+          else
+            qrhomi(iice_dest) = Q_nuc
+            nrhomi(iice_dest) = N_nuc
+          end if
+          !BG end
+
+       endif
+         qcrfrz_hom=SUM(qrhomi(:))+SUM(qchomi(:))
+         ncrfrz_hom=SUM(nrhomi(:))+SUM(nchomi(:))
+      !BG micro proc rates here as hom nucleation done only later than rest
+      if (do_accumulate_micro_proc_rates) then
+         idx= fidx !final idx from micro rates 10 !!! !BG A10
+         !idx=idx+1 
+         !micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qrhomi(:))+SUM(qchomi(:)) ! + SUM(qcrfrz_hom(:)) !instantaneous hom freezing of cloud drops and rain (security statement) !BG
+         !number rates =>total newly nucleation number
+         idx=idx+1
+         micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrhomi(:))+SUM(nchomi(:)) !SUM(ncrfrz_hom(:)) !instantaneous hom freezing of cloud drops and rain (security statement) !BG
+
+      endif
+      !BG end
+
+    enddo k_loop_fz
 
 ! note: This debug check is commented since small negative qx,nx values are possible here
 !       (but get adjusted below).  If uncommented, caution in interpreting results.
