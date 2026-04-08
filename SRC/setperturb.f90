@@ -4,7 +4,7 @@ subroutine setperturb
 
 use vars
 use params
-use microphysics, only: micro_field, index_water_vapor
+use microphysics, only: micro_field, index_water_vapor, iqit, inci, ReffIce_P3, IceMassMixingRatio_P3, reffi, nCat_ice_P3
 use sgs, only: setperturb_sgs
 
 implicit none
@@ -12,9 +12,17 @@ implicit none
 integer i,j,k,ptype,it,jt
 real rrr,ranf_
 real xxx,yyy,zzz
+! parameters
+real :: iwc_target_kgm3
+real :: reff_top_um, reff_base_um
+real :: nL_base, nL_top
+real :: zbase, ztop, radius
+integer :: ii
 
-! --- variables used by case(30) (must be declared up here)
+! --- variables used by case(30) and case(31) (must be declared up here)
 real xc, yc, rxy, noise
+real sum_noise, mean_noise, fracz, reff_um, nL, invrho, qice_mmr, n_mix, Tlocal
+integer npts
 
 call ranset_(3*rank)
 
@@ -201,6 +209,132 @@ select case (ptype)
         end do
       endif
     end do
+
+  case(31)
+    !============================================================
+    ! Isolated anvil cloud initialization (Case 31)
+    !
+    ! Initializes an optically thick anvil cloud with:
+    !  - Base = 8 km, Top = 13 km, Radius = 30 km (centered domain)
+    !  - Ice water content (IWC) = 0.3 g/m3 (uniform target)
+    !  - Effective radius: 20 um at top -> 40 um at base (linear)
+    !  - Ice number concentration: 900 -> 3600 L^-1 (base->top),
+    !      enforce >3000 L^-1 above 10.5 km
+    !  - Random potential temperature perturbations ~ ±0.01 K (zero mean)
+    !  - Attempts a simple buoyant compensation so cloud is near-neutral
+    !============================================================
+
+    if(masterproc) then
+      print*, 'Initialize isolated anvil cloud (case 31): IWC=0.3 g/m3, reff 20->40um, N 900->3600 L^-1'
+    end if
+
+    xc = 0.5 * nx_gl * dx
+    yc = 0.5 * ny_gl * dy
+
+    iwc_target_kgm3 = 0.3e-3 ! 0.3 g/m3 -> kg/m3
+    reff_top_um = 20.0
+    reff_base_um = 40.0
+    nL_base = 900.0
+    nL_top = 3600.0
+    zbase = 8000.0
+    ztop = 13000.0
+    radius = 30000.0
+    ii = 1
+
+    ! First pass: set microphysics fields and accumulate statistics for mean noise
+    sum_noise = 0.0
+    npts = 0
+
+    call task_rank_to_index(rank,it,jt)
+
+    do k = 1, nzm
+      zzz = z(k)
+      if (zzz .ge. zbase .and. zzz .le. ztop) then
+        ! fractional height from base (0) to top (1)
+        fracz = (zzz - zbase) / (ztop - zbase)
+
+        ! determine target reff and number concentration at this level
+        reff_um = reff_base_um + (reff_top_um - reff_base_um) * fracz
+        nL = nL_base + (nL_top - nL_base) * fracz
+        if (zzz .ge. 10500.0) nL = max(nL, 3000.0)
+
+        do j = 1, ny
+          yyy = dy * (j + jt)
+          do i = 1, nx
+            xxx = dx * (i + it)
+            rxy = sqrt( (xxx - xc)**2 + YES3D*(yyy - yc)**2 )
+            if (rxy .le. radius) then
+
+              ! convert to mixing ratios (#/kg or kg/kg)
+              invrho = 1.0 / rho(k)
+
+              qice_mmr = iwc_target_kgm3 * invrho  ! kg/kg
+              n_mix = (nL / 1000.0) * invrho       ! convert L^-1 -> m^-3 then /rho -> #/kg
+
+              ! set total ice mass and number in micro_field (category ii)
+              micro_field(i,j,k, iqit(ii)) = qice_mmr
+              micro_field(i,j,k, inci(ii)) = n_mix
+
+              ! set P3 arrays (per-category)
+              IceMassMixingRatio_P3(i,j,k,ii) = qice_mmr
+              ReffIce_P3(i,j,k,ii) = reff_um
+              reffi(i,j,k) = reff_um
+
+              ! random small temperature perturbation (±0.01 K)
+              noise = 0.01 * (2.0*ranf_() - 1.0)
+              t(i,j,k) = t(i,j,k) + noise
+              sum_noise = sum_noise + noise
+              npts = npts + 1
+
+            end if
+          end do
+        end do
+
+      end if
+    end do
+
+    ! remove mean of noise in the cloud so the perturbations have zero mean
+    if (npts .gt. 0) then
+      mean_noise = sum_noise / dble(npts)
+
+      do k = 1, nzm
+        zzz = z(k)
+        if (zzz .ge. zbase .and. zzz .le. ztop) then
+          do j = 1, ny
+            do i = 1, nx
+              xxx = dx * (i + it)
+              yyy = dy * (j + jt)
+              rxy = sqrt( (xxx - xc)**2 + YES3D*(yyy - yc)**2 )
+              if (rxy .le. radius) then
+                t(i,j,k) = t(i,j,k) - mean_noise
+              end if
+            end do
+          end do
+        end if
+      end do
+    end if
+
+    ! Buoyant compensation: simple heuristic to offset virtual temperature decrease
+    ! due to added condensate mass: add ~ T * qice (small correction)
+    do k = 1, nzm
+      zzz = z(k)
+      if (zzz .ge. zbase .and. zzz .le. ztop) then
+        do j = 1, ny
+          do i = 1, nx
+            xxx = dx * (i + it)
+            yyy = dy * (j + jt)
+            rxy = sqrt( (xxx - xc)**2 + YES3D*(yyy - yc)**2 )
+            if (rxy .le. radius) then
+              qice_mmr = micro_field(i,j,k, iqit(ii))
+              Tlocal = tabs(i,j,k)
+              ! add a small warming to offset the virtual temperature reduction
+              t(i,j,k) = t(i,j,k) + Tlocal * qice_mmr
+            end if
+          end do
+        end do
+      end if
+    end do
+
 
   case(-1)
     !bloss: no perturbation

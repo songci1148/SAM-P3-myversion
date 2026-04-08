@@ -85,3 +85,4 @@ walker/walker_test.o8523800
 walker/walker_test.o8523954
 walker_3d/
 rce_acre/
+*.nml

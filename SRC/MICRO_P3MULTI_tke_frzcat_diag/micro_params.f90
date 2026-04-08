@@ -121,10 +121,10 @@ real,public :: ramp_min = 0.1 !INP ramp parameter ramp_min*NumCirrusINP = at low
    logical, public :: lath3d = .false. !3d output of latent heating from micro code
 
    integer :: nmicro_proc
-   integer, parameter :: nmicro_process_rates = 32 !24 ! out of 43
+   integer, parameter :: nmicro_process_rates = 121 !43 + 18 totals + 60 pairwise ice-ice transfers
    !no need for that: integer, parameter :: nmicro_process_rates_warm = 14
-   character(len=8), dimension(nmicro_process_rates), parameter, public :: &
-      micro_process_rate_names = (/ &
+   character(len=9), dimension(nmicro_process_rates), parameter, public :: &
+      micro_process_rate_names = (/ character(len=9) :: &
    ! liquid/ice mass process rates (Q, kg kg-1 s-1)
         'qrcon    ', & ! rain condensation
         'qcacc    ', & ! cloud droplet accretion by rain
@@ -158,7 +158,99 @@ real,public :: ramp_min = 0.1 !INP ramp parameter ramp_min*NumCirrusINP = at low
         'nimlt    ', & ! melting of ice
         'nisub    ', & ! change in ice number from sublimation
         'nislf    ', & ! change in ice number from collection within a category
-        'nrchomi  '/) ! homog freezing of cloud droplets and rain
+        'nrchomi  ', & ! homog freezing of cloud droplets and rain
+        'qinuc2   ', & ! cirrus heterogeneous (dust) in-situ freezing mass
+        'qinuc3   ', & ! cirrus in-situ freezing mass (LP scheme)
+        'qfrz_het ', & ! total heterogeneous freezing mass
+        'qfrz_hom ', & ! total homogeneous freezing mass
+      'qfrz_cdh ', & ! homogeneous freezing mass of cloud droplets
+      'ncrfrz   ', & ! total number freezing of cloud droplets and rain
+      'nchetc   ', & ! contact freezing droplets (number)
+      'nrhetc   ', & ! contact freezing rain (number)
+      'nrshdr   ', & ! source for rain number from shedding
+      'ncshdc   ', & ! source for rain number from cloud-ice shedding
+      'rhorimec ', & ! density of rime (from cloud)
+   ! ice-ice collection transfer diagnostics (per-category totals, A-F correspond to ice categories 1-6)
+      'qicina   ', & ! ice-ice collection mass into category A
+      'qicouta  ', & ! ice-ice collection mass out of category A
+      'nicouta  ', & ! ice-ice collection number sink out of category A
+      'qicinb   ', &
+      'qicoutb  ', &
+      'nicoutb  ', &
+      'qicinc   ', &
+      'qicoutc  ', &
+      'nicoutc  ', &
+      'qicind   ', &
+      'qicoutd  ', &
+      'nicoutd  ', &
+      'qicine   ', &
+      'qicoute  ', &
+      'nicoute  ', &
+      'qicinf   ', &
+      'qicoutf  ', &
+      'nicoutf  ', &
+   ! ice-ice collection transfers by pair (collectee i -> collector j): mass
+      'qic12    ', &
+      'qic13    ', &
+      'qic14    ', &
+      'qic15    ', &
+      'qic16    ', &
+      'qic21    ', &
+      'qic23    ', &
+      'qic24    ', &
+      'qic25    ', &
+      'qic26    ', &
+      'qic31    ', &
+      'qic32    ', &
+      'qic34    ', &
+      'qic35    ', &
+      'qic36    ', &
+      'qic41    ', &
+      'qic42    ', &
+      'qic43    ', &
+      'qic45    ', &
+      'qic46    ', &
+      'qic51    ', &
+      'qic52    ', &
+      'qic53    ', &
+      'qic54    ', &
+      'qic56    ', &
+      'qic61    ', &
+      'qic62    ', &
+      'qic63    ', &
+      'qic64    ', &
+      'qic65    ', &
+   ! ice-ice collection transfers by pair (collectee i with collector j): number sink
+      'nic12    ', &
+      'nic13    ', &
+      'nic14    ', &
+      'nic15    ', &
+      'nic16    ', &
+      'nic21    ', &
+      'nic23    ', &
+      'nic24    ', &
+      'nic25    ', &
+      'nic26    ', &
+      'nic31    ', &
+      'nic32    ', &
+      'nic34    ', &
+      'nic35    ', &
+      'nic36    ', &
+      'nic41    ', &
+      'nic42    ', &
+      'nic43    ', &
+      'nic45    ', &
+      'nic46    ', &
+      'nic51    ', &
+      'nic52    ', &
+      'nic53    ', &
+      'nic54    ', &
+      'nic56    ', &
+      'nic61    ', &
+      'nic62    ', &
+      'nic63    ', &
+      'nic64    ', &
+      'nic65    '/)
 
    !  'ncrfrz    ', & ! number freezing of cloud droplets (qinuc + qchetc + qcheti) and rain (qrhti+qrhetc) !BG
    !  'nchetc    ', & ! contact freezing droplets
@@ -175,7 +267,7 @@ real,public :: ramp_min = 0.1 !INP ramp parameter ramp_min*NumCirrusINP = at low
  !qicol ! change of q due to ice-ice collision between categories
 
    character(len=80), dimension(nmicro_process_rates), parameter, public :: &
-        micro_process_rate_longnames = (/ &
+      micro_process_rate_longnames = (/ character(len=80) :: &
      'qrcon rain condensation', &
      'qcacc cloud accretion by rain', &
      'qcaut cloud autoconversion to rain', &
@@ -207,5 +299,94 @@ real,public :: ramp_min = 0.1 !INP ramp parameter ramp_min*NumCirrusINP = at low
      'nimlt melting', &
      'nisub sublimation', &
      'nislf self-collection', &
-     'nrchomi hom frz droplets+rain' /)
+    'nrchomi hom frz droplets+rain', &
+    'qinuc2 cirrus hetero freezing mass (Mohler/dust)', &
+    'qinuc3 cirrus in-situ freezing mass (LP scheme)', &
+    'qfrz_het total heterogeneous freezing mass', &
+   'qfrz_hom total homogeneous freezing mass', &
+   'qfrz_cdh homogeneous freezing mass of cloud droplets', &
+   'ncrfrz total freezing number (cloud+rain)', &
+   'nchetc droplet contact freezing number', &
+   'nrhetc rain contact freezing number', &
+   'nrshdr rain number source from shedding', &
+   'ncshdc rain number source from shedding (cloud-ice)', &
+   'rhorimec rime density from cloud (mean)', &
+   'qicina ice-ice collection mass into ice category A', &
+   'qicouta ice-ice collection mass out of ice category A', &
+   'nicouta ice-ice collection number sink out of ice category A', &
+   'qicinb ice-ice collection mass into ice category B', &
+   'qicoutb ice-ice collection mass out of ice category B', &
+   'nicoutb ice-ice collection number sink out of ice category B', &
+   'qicinc ice-ice collection mass into ice category C', &
+   'qicoutc ice-ice collection mass out of ice category C', &
+   'nicoutc ice-ice collection number sink out of ice category C', &
+   'qicind ice-ice collection mass into ice category D', &
+   'qicoutd ice-ice collection mass out of ice category D', &
+   'nicoutd ice-ice collection number sink out of ice category D', &
+   'qicine ice-ice collection mass into ice category E', &
+   'qicoute ice-ice collection mass out of ice category E', &
+   'nicoute ice-ice collection number sink out of ice category E', &
+   'qicinf ice-ice collection mass into ice category F', &
+   'qicoutf ice-ice collection mass out of ice category F', &
+   'nicoutf ice-ice collection number sink out of ice category F', &
+   'qic12 ice-ice mass transfer 1->2 (collectee 1 to collector 2)', &
+   'qic13 ice-ice mass transfer 1->3 (collectee 1 to collector 3)', &
+   'qic14 ice-ice mass transfer 1->4 (collectee 1 to collector 4)', &
+   'qic15 ice-ice mass transfer 1->5 (collectee 1 to collector 5)', &
+   'qic16 ice-ice mass transfer 1->6 (collectee 1 to collector 6)', &
+   'qic21 ice-ice mass transfer 2->1 (collectee 2 to collector 1)', &
+   'qic23 ice-ice mass transfer 2->3 (collectee 2 to collector 3)', &
+   'qic24 ice-ice mass transfer 2->4 (collectee 2 to collector 4)', &
+   'qic25 ice-ice mass transfer 2->5 (collectee 2 to collector 5)', &
+   'qic26 ice-ice mass transfer 2->6 (collectee 2 to collector 6)', &
+   'qic31 ice-ice mass transfer 3->1 (collectee 3 to collector 1)', &
+   'qic32 ice-ice mass transfer 3->2 (collectee 3 to collector 2)', &
+   'qic34 ice-ice mass transfer 3->4 (collectee 3 to collector 4)', &
+   'qic35 ice-ice mass transfer 3->5 (collectee 3 to collector 5)', &
+   'qic36 ice-ice mass transfer 3->6 (collectee 3 to collector 6)', &
+   'qic41 ice-ice mass transfer 4->1 (collectee 4 to collector 1)', &
+   'qic42 ice-ice mass transfer 4->2 (collectee 4 to collector 2)', &
+   'qic43 ice-ice mass transfer 4->3 (collectee 4 to collector 3)', &
+   'qic45 ice-ice mass transfer 4->5 (collectee 4 to collector 5)', &
+   'qic46 ice-ice mass transfer 4->6 (collectee 4 to collector 6)', &
+   'qic51 ice-ice mass transfer 5->1 (collectee 5 to collector 1)', &
+   'qic52 ice-ice mass transfer 5->2 (collectee 5 to collector 2)', &
+   'qic53 ice-ice mass transfer 5->3 (collectee 5 to collector 3)', &
+   'qic54 ice-ice mass transfer 5->4 (collectee 5 to collector 4)', &
+   'qic56 ice-ice mass transfer 5->6 (collectee 5 to collector 6)', &
+   'qic61 ice-ice mass transfer 6->1 (collectee 6 to collector 1)', &
+   'qic62 ice-ice mass transfer 6->2 (collectee 6 to collector 2)', &
+   'qic63 ice-ice mass transfer 6->3 (collectee 6 to collector 3)', &
+   'qic64 ice-ice mass transfer 6->4 (collectee 6 to collector 4)', &
+   'qic65 ice-ice mass transfer 6->5 (collectee 6 to collector 5)', &
+   'nic12 ice-ice number sink from collectee 1 due to collector 2', &
+   'nic13 ice-ice number sink from collectee 1 due to collector 3', &
+   'nic14 ice-ice number sink from collectee 1 due to collector 4', &
+   'nic15 ice-ice number sink from collectee 1 due to collector 5', &
+   'nic16 ice-ice number sink from collectee 1 due to collector 6', &
+   'nic21 ice-ice number sink from collectee 2 due to collector 1', &
+   'nic23 ice-ice number sink from collectee 2 due to collector 3', &
+   'nic24 ice-ice number sink from collectee 2 due to collector 4', &
+   'nic25 ice-ice number sink from collectee 2 due to collector 5', &
+   'nic26 ice-ice number sink from collectee 2 due to collector 6', &
+   'nic31 ice-ice number sink from collectee 3 due to collector 1', &
+   'nic32 ice-ice number sink from collectee 3 due to collector 2', &
+   'nic34 ice-ice number sink from collectee 3 due to collector 4', &
+   'nic35 ice-ice number sink from collectee 3 due to collector 5', &
+   'nic36 ice-ice number sink from collectee 3 due to collector 6', &
+   'nic41 ice-ice number sink from collectee 4 due to collector 1', &
+   'nic42 ice-ice number sink from collectee 4 due to collector 2', &
+   'nic43 ice-ice number sink from collectee 4 due to collector 3', &
+   'nic45 ice-ice number sink from collectee 4 due to collector 5', &
+   'nic46 ice-ice number sink from collectee 4 due to collector 6', &
+   'nic51 ice-ice number sink from collectee 5 due to collector 1', &
+   'nic52 ice-ice number sink from collectee 5 due to collector 2', &
+   'nic53 ice-ice number sink from collectee 5 due to collector 3', &
+   'nic54 ice-ice number sink from collectee 5 due to collector 4', &
+   'nic56 ice-ice number sink from collectee 5 due to collector 6', &
+   'nic61 ice-ice number sink from collectee 6 due to collector 1', &
+   'nic62 ice-ice number sink from collectee 6 due to collector 2', &
+   'nic63 ice-ice number sink from collectee 6 due to collector 3', &
+   'nic64 ice-ice number sink from collectee 6 due to collector 4', &
+   'nic65 ice-ice number sink from collectee 6 due to collector 5' /)
  end module micro_params

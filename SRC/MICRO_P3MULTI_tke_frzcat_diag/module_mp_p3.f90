@@ -2409,7 +2409,7 @@ real :: ci
                    Eii_fact(iice) = 0.
                 endif
              else
-                Eii_fact(iice) = 1.
+                  Eii_fact(iice) = 1.
              endif
 
           endif qitot_notsmall_1 ! qitot > qsmall
@@ -3991,9 +3991,9 @@ ncrfrz = ninuc+nchetc+ncheti+nrhetc+nrheti  !+ ninuc2+ninuc3 !BG sum of all free
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qisub(:)) ! sublimation of ice [kg/kg/s]
     idx = idx + 1
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qimlt(:)) ! melting of ice [kg/kg/s]
-    idx = idx + 1
+    idx = idx + 1 ! CS mixed-phase freezing idx=15
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qcrfrz(:)) ! freezing of cloud droplets and rain [kg/kg/s]
-    idx = idx + 1
+    idx = idx + 1 ! CS in-situ freezing idx=16
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qinuc2(:)) + SUM(qinuc3(:)) ! cirrus in-situ freezing [kg/kg/s]
     idx = idx + 1
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qcheti(:)) ! immersion freezing of cloud droplets [kg/kg/s]
@@ -4007,28 +4007,118 @@ ncrfrz = ninuc+nchetc+ncheti+nrhetc+nrheti  !+ ninuc2+ninuc3 !BG sum of all free
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qcmul(:)) ! rime-splintering of cloud water [kg/kg/s]
     idx = idx + 1
     micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qrmul(:)) ! rime-splintering of rain [kg/kg/s]
-  
-    !BG 3d number rates, focused on ice/freezing
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc(:))  !(some sort of) deposition freezing [mixed-phase]
+
+    ! number rates (N, # kg-1 s-1)
     idx = idx + 1
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc2(:)) !cirrus freezing from Mohler (if enabled) [cirrus]
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc(:))  ! deposition freezing mixed-phase
     idx = idx + 1
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc3(:)) !cirrus freezing from Liu and Penner HOM+HET or only HOM [cirrus]  
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc2(:)) ! Mohler depo freezing cirrus
     idx = idx + 1
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ncheti(:)) !immersion freezing of cloud droplets [mixed-phase]
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ninuc3(:)) ! LP cirrus freezing number
     idx = idx + 1
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrheti(:)) !immersion freezing of rain [mixed phase]
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ncheti(:)) ! immersion freezing droplets (number)
     idx = idx + 1
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nimul(:)) !multiplication of ice by rime splintering/Hallet-Mossop, enabled only with multiple cat [mixed phase]
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrheti(:)) ! immersion freezing rain (number)
     idx = idx + 1
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nimlt(:)) ! melting of ice [#/m3]
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nimul(:))  ! rime-splintering (number)
     idx = idx + 1
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nisub(:)) ! sublimation of ice [#/m3] I think all in units /s due to multipl with odt
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nimlt(:))  ! melting (number)
     idx = idx + 1
-    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nislf(:)) ! change in ice number from collection within a category [#/m3]
-   idx = idx + 1
-   micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nchomi(:)) + SUM(nrhomi(:)) ! hom frz of droplets and rain [#/m3]
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nisub(:))  ! sublimation (number)
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nislf(:))  ! self-collection (number)
+
+    ! nrchomi (index 32): homogeneous freezing number is computed later (k_loop_fz)
+    idx = idx + 1
+
+    ! additional cirrus/freezing mass diagnostics
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qinuc2(:)) ! cirrus hetero freezing mass
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qinuc3(:)) ! cirrus in-situ freezing mass (LP)
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qcrfrz(:)) + SUM(qinuc2(:)) ! total heterogeneous freezing mass
+
+    ! qfrz_hom (index 36) and qfrz_cdh (index 37) are computed later (k_loop_fz)
+    idx = idx + 2
+
+    ! additional mixed-phase/freezing number diagnostics
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ncrfrz(:)) ! total freezing number (cloud+rain)
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nchetc(:)) ! droplet contact freezing number
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrhetc(:)) ! rain contact freezing number
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrshdr(:)) ! rain number source from shedding
+    idx = idx + 1
+    micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(ncshdc(:)) ! rain number source from cloud-ice shedding
+    idx = idx + 1
+    if (SUM(qccol(:)) .gt. 0.) then
+       micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(rhorime_c(:)*qccol(:))/SUM(qccol(:))
+    else
+       micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(rhorime_c(:))/real(nCat)
+    endif
+
+    ! ice-ice collection transfer diagnostics (per-category totals).
+    ! qicol(collectee,collector): mass transfer from collectee -> collector.
+    ! nicol(collectee,collector): number sink for collectee due to collisions with collector.
+    ! Outputs are provided for ice categories 1-6 (A-F). If nCat < 6, remaining categories are zero.
+    do ii = 1,6
+       if (ii .le. nCat) then
+          tmp1 = 0.  ! mass in to category ii
+          tmp2 = 0.  ! mass out of category ii
+          tmp3 = 0.  ! number out of category ii
+          do jj = 1,nCat
+             if (jj .ne. ii) then
+                tmp1 = tmp1 + qicol(jj,ii)
+                tmp2 = tmp2 + qicol(ii,jj)
+                tmp3 = tmp3 + nicol(ii,jj)
+             endif
+          enddo
+          idx = idx + 1
+          micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + tmp1
+          idx = idx + 1
+          micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + tmp2
+          idx = idx + 1
+          micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + tmp3
+       else
+          idx = idx + 3
+       endif
+    enddo
+
+    ! ice-ice collection transfers by pair (i->j), for i,j = 1..6, i /= j.
+    ! Order matches micro_params.f90: qic12..qic65 then nic12..nic65.
+    do ii = 1,6
+       do jj = 1,6
+          if (ii .ne. jj) then
+             idx = idx + 1
+             if (ii .le. nCat .and. jj .le. nCat) then
+                micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + qicol(ii,jj)
+             endif
+          endif
+       enddo
+    enddo
+
+    do ii = 1,6
+       do jj = 1,6
+          if (ii .ne. jj) then
+             idx = idx + 1
+             if (ii .le. nCat .and. jj .le. nCat) then
+                micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + nicol(ii,jj)
+             endif
+          endif
+       enddo
+    enddo
+
     fidx = idx !final idx
+    if (debug_on) then
+       if (idx .ne. nmicro_process_rates) then
+          print*, '*** ERROR in P3_MAIN: micro_proc_rates index mismatch: idx=',idx,' expected=',nmicro_process_rates
+          global_status = STATUS_ERROR
+          return
+       endif
+    endif
 endif
 !SAM additions end
 
@@ -4643,13 +4733,15 @@ endif
           !nrhomi(iice_dest) = N_nuc !BG
        !endif
           !BG
-          if (no_ice_nucleation .or. no_hom_ice_nucleation) then
-            qrhomi(iice_dest) = 0.
-            nrhomi(iice_dest) = 0.
-          else
-            qrhomi(iice_dest) = Q_nuc
-            nrhomi(iice_dest) = N_nuc
-          end if
+               if (no_ice_nucleation .or. no_hom_ice_nucleation) then
+                  qrhomi(iice_dest) = 0.
+                  nrhomi(iice_dest) = 0.
+               else
+                  ! Keep homogeneous freezing diagnostics in rate units (per second), consistent
+                  ! with qchomi/nchomi and with micro_proc_rates output conventions.
+                  qrhomi(iice_dest) = Q_nuc*odt ! CS added *odt to convert to rate units for output
+                  nrhomi(iice_dest) = N_nuc*odt
+               end if
           !BG end
 
        endif
@@ -4657,13 +4749,12 @@ endif
          ncrfrz_hom=SUM(nrhomi(:))+SUM(nchomi(:))
       !BG micro proc rates here as hom nucleation done only later than rest
       if (do_accumulate_micro_proc_rates) then
-         idx= fidx !final idx from micro rates 10 !!! !BG A10
-         !idx=idx+1 
-         !micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(qrhomi(:))+SUM(qchomi(:)) ! + SUM(qcrfrz_hom(:)) !instantaneous hom freezing of cloud drops and rain (security statement) !BG
-         !number rates =>total newly nucleation number
-         idx=idx+1
-         micro_proc_rates(i,k,idx) = micro_proc_rates(i,k,idx) + SUM(nrhomi(:))+SUM(nchomi(:)) !SUM(ncrfrz_hom(:)) !instantaneous hom freezing of cloud drops and rain (security statement) !BG
-
+         ! Fill entries that depend on homogeneous freezing, using the same ordering as
+         ! micro_process_rate_names in micro_params.f90:
+         !  32: nrchomi, 36: qfrz_hom, 37: qfrz_cdh
+         micro_proc_rates(i,k,32) = micro_proc_rates(i,k,32) + SUM(nrhomi(:)) + SUM(nchomi(:))
+         micro_proc_rates(i,k,36) = micro_proc_rates(i,k,36) + SUM(qrhomi(:)) + SUM(qchomi(:))
+         micro_proc_rates(i,k,37) = micro_proc_rates(i,k,37) + SUM(qchomi(:))
       endif
       !BG end
 

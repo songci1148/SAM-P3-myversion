@@ -3,16 +3,17 @@
 /
 
  &MICRO_P3
- nCat = 1                               !How many independent ice modes would you like to have (default = 1; climatologically not that different for radiation if more)
- frzmodes = .false.                     !Do you want that each source process has a separate ice mode? [nice for detailed micro studies]
+ nCat = 6                               !How many independent ice modes would you like to have (default = 1; climatologically not that different for radiation if more)
+ frzmodes = .true.                     !Do you want that each source process has a separate ice mode? [nice for detailed micro studies]
  log_predictNc = .false.                 !note: if on grid coarser than e.g. 1 km, maybe just prescribe it with Nc0!
  aerosol_mode1_number = 120.e6          !see in code
  do_output_micro_process_rates = .true. !see in code what gets out if this is set to true
  Nc0 = 1600.                             !note: prescribed CDNC, used if log_predictNC is set to false
- MaxTotalIceNumber = 10.e6              !note: much more than in the default scheme; and yes we need that so!
+ MaxTotalIceNumber = 1600.e6              !note: much more than in the default scheme; and yes we need that so!
  NumCirrusSulf = 20.                    !number of sulfate aerosol per unit of cubic centimeter
  NumCirrusINP = 20.e-3                  !number of hardcoded cirrus INPs (or its maximum value if ramp_min is <1)
  ramp_min = 0.1                         !INP linear ramp minimum value relative to NumCirrusINP (so for 0.1: 0.1*NumCirrusINP)
+ dust_ramp =.true.
  useMurphyKoopESat = .true.             !a more precise saturation vapor pressure formulation, more precise for T<-60C or so; used instead of Flatau
 
  depo_frz_std = .false.                 !use new freezing for cirrus (if .false.) or use default P3 (if .true.)
@@ -35,11 +36,10 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
 
 
  &PARAMETERS
-
  nrestart = 0,       !1 if you start from a restart file
  nrestart_skip=5,    !write restart file every n+1th time a stat file computed
 
- caseid ='new_frz_P3_256x256x128_Nc0_1600',
+ caseid ='bubble_Nc0_1600_4trs_1d6W', !case ID used in output filenames
 
  CEM = .true.,
  OCEAN = .true.,
@@ -77,13 +77,13 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
  !NOTE: Additional diagnostics, mainly from BG or PBloss----------------
  disablecloudradiation    =.false.,
  disablecloudradiation_sw =.false.,
- dotracers    = .false.,     !output passive tracers; sloppy implementation: to use them, change /SRC/tracers.f90 file for one in /SRC/tracers_allcode 
+ dotracers    = .true.,     !output passive tracers; sloppy implementation: to use them, change /SRC/tracers.f90 file for one in /SRC/tracers_allcode 
                              ! no switch due to often encountering error with circulat dependencies between tracers and microphysics!
                              ! also, change ntracers=0 in SRC/domain.f90 to the number of transported tracers 
  write_w2_sgs = .false.,     !output subgrid scale w from tke, BG
 
  csky3d = .true.,           !output 3D clear sky radiative heating rates
- trac3d = .false.,           !NOTE: tracers 3D fields in the output
+ trac3d = .true.,           !NOTE: tracers 3D fields in the output
  acre3d = .true.,            !output 3D cloud radiative heating = acre
  rad3Dout  = .true.,        !effective radius of in the output
  !Additional diagnostics stop---------------------------
@@ -118,12 +118,12 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
 
  day0=0.0,
 
- nstop 		= 1440, !12 hr for timestep of 30 sec
+ nstop 		= 1440, !6 hr for timestep of 30 sec
  nprint 	= 4, ! 4 x 30 = 120 s print output every 2 min
  nstat 		= 60, ! 30 min
  nstatfrq 	= 15,
 
- nsave2D	= 60, ! 30 min (120=1hour for 30s dt)
+ nsave2D	= 120, ! 30 min (120=1hour for 30s dt)
  nsave2Dstart	= 0,
  nsave2Dend	= 99960480,
 

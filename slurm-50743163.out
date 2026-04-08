@@ -1,0 +1,186 @@
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+Abort(2139535) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(176)........: 
+MPID_Init(1546)..............: 
+MPIDI_OFI_mpi_init_hook(1518): 
+open_fabric(2572)............: 
+find_provider(2694)..........: OFI fi_getinfo() failed (ofi_init.c:2694:find_provider:No data available)
+[2026-02-24T11:50:44.755] error: *** STEP 50743163.0 ON n1285 CANCELLED AT 2026-02-24T11:50:44 DUE to SIGNAL Killed ***
+srun: Job step aborted: Waiting up to 302 seconds for job step to finish.
+srun: error: n1285: tasks 0-31: Killed
+srun: Terminating StepId=50743163.0
+[2026-02-24T11:50:45.009] error: --task-epilog failed status=15
+srun: error: n1286: tasks 32-63: Killed

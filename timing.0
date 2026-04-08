@@ -4,38 +4,38 @@ CPU accumulation interval is 0.01 seconds
 
 Stats for thread 0:
 Name               Called       Wallclock    Percent of total  
-          total            1   8178.907          100.000
-       initialize          1      9.507            0.116
-     boundaries        90156    824.868           10.085
-           kurant       2880      2.678            0.033
-             zero      17743     20.831            0.255
-         buoyancy      17743     29.940            0.366
-          forcing      17743      0.359            0.004
-          nudging      17743      0.109            0.001
-          damping      17743      6.170            0.075
-          surface      17743     16.709            0.204
-         tke_full      17743    110.062            1.346
-       advect_mom      17743    117.116            1.432
-      diffuse_mom      17743    117.333            1.435
-         pressure      17743    405.260            4.955
-        adams_uvw      35486     88.105            1.077
-   advect_scalars     177430   1144.650           13.995
-  diffuse_scalars     177430    436.220            5.333
-       upperbound      17743      0.291            0.004
-        radiation      17743   1273.851           15.575
-       radiation-lw    15360    306.072            3.742
-       radiation-sw    15360    911.526           11.145
-         diagnose      17743    147.429            1.803
-           2D_out       2880     13.770            0.168
-           3D_out       2880     21.161            0.259
-        print_out       2880     11.035            0.135
-       statistics        720     45.244            0.553
-   sgs_statistics        720      0.412            0.005
-         stat_out         48      2.257            0.028
-      restart_out          8     25.644            0.314
+          total            1   6583.878          100.000
+       initialize          1     16.545            0.251
+     boundaries        28086    909.106           13.808
+           kurant       1440      1.533            0.023
+             zero       5473      5.761            0.087
+         buoyancy       5473      9.842            0.149
+          forcing       5473      0.147            0.002
+          nudging       5473      0.068            0.001
+          damping       5473      1.843            0.028
+          surface       5473      5.148            0.078
+         tke_full       5473     29.488            0.448
+       advect_mom       5473     37.491            0.569
+      diffuse_mom       5473     37.085            0.563
+         pressure       5473    126.098            1.915
+        adams_uvw      10946     28.401            0.431
+   advect_scalars     186082    627.375            9.529
+  diffuse_scalars     186082    458.024            6.957
+       upperbound       5473      0.050            0.001
+        radiation       5473    614.710            9.337
+       radiation-lw     7680    141.250            2.145
+       radiation-sw     7680    445.009            6.759
+         diagnose       5473     73.839            1.122
+           2D_out       1440      1.533            0.023
+           3D_out       1440     23.763            0.361
+        print_out       1440      8.908            0.135
+       statistics        360     22.675            0.344
+   sgs_statistics        360      0.213            0.003
+         stat_out         24      1.441            0.022
+      restart_out          4     17.476            0.265
 
-TIMER OVERHEAD (wallclock seconds) =     1.569929
+TIMER OVERHEAD (wallclock seconds) =     1.136829
 
 Same stats sorted by timer with thread number appended:
 Name               Called       Wallclock    Percent of total  
-OVERHEAD.0   (wallclock seconds) =     1.569929
+OVERHEAD.0   (wallclock seconds) =     1.136829
