@@ -3,8 +3,8 @@
 module domain
 
        integer, parameter :: YES3D = 1 !1  ! Domain dimensionality: 1 - 3D, 0 - 2D
-       integer, parameter :: nx_gl = 256 !4096 !1024 !4096 !3888 !1080 !15552 !3888 !960 !432 !3840 !11520 !4096 !256! Number of grid points in X
-       integer, parameter :: ny_gl = 256 !32 !4 !32 !36 !12 !144 !36 !36 !64 !1 !36 !32 !1 ! Number of grid points in Y
+       integer, parameter :: nx_gl = 480 !4096 !1024 !4096 !3888 !1080 !15552 !3888 !960 !432 !3840 !11520 !4096 !256! Number of grid points in X
+       integer, parameter :: ny_gl = 480 !32 !4 !32 !36 !12 !144 !36 !36 !64 !1 !36 !32 !1 ! Number of grid points in Y
        integer, parameter :: nz_gl = 128 !288 !192 !288 !192 !324 !189 !192 !192 !768 !384 !192  ! Number of pressure (scalar) levels
        integer, parameter :: nsubdomains_x  =8 !128 !512 !256 ! 972 !216 !192 !108 !216 !192 !108 !216 ! No of subdomains in x
        integer, parameter :: nsubdomains_y  =8 !1 !2 !4 !2 !1  ! No of subdomains in y

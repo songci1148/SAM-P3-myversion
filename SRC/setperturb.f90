@@ -16,7 +16,7 @@ real xxx,yyy,zzz
 real :: iwc_target_kgm3
 real :: reff_top_um, reff_base_um
 real :: nL_base, nL_top
-real :: zbase, ztop, radius
+real :: radius
 integer :: ii
 
 ! --- variables used by case(30) and case(31) (must be declared up here)
@@ -236,8 +236,6 @@ select case (ptype)
     reff_base_um = 40.0
     nL_base = 900.0
     nL_top = 3600.0
-    zbase = 8000.0
-    ztop = 13000.0
     radius = 30000.0
     ii = 1
 

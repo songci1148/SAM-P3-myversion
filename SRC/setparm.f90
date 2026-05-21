@@ -47,7 +47,7 @@ NAMELIST /PARAMETERS/ dodamping, doupperbound, docloud, doprecip, &
                 nstatmom, nstatmomstart, nstatmomend, savemomsep, savemombin, &
                 nmovie, nmoviestart, nmovieend, nrestart_skip, &
                 bubble_x0,bubble_y0,bubble_z0,bubble_radius_hor, &
-                bubble_radius_ver,bubble_dtemp,bubble_dq, dosmoke, dossthomo, &
+                bubble_radius_ver,bubble_dtemp,bubble_dq,zbase,ztop, dosmoke, dossthomo, &
                 rad3Dout, nxco2, dosimfilesout, notracegases, &
                 ncycle_max, ncycle_min, ncycle0, cfl_safety_factor, &
                 do_chunked_energy_budgets, do_chunked_momentum_budgets, &

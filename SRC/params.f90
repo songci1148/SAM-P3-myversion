@@ -145,6 +145,10 @@ integer:: perturb_type  = 0 ! type of initial noise in setperturb()
   real:: bubble_dtemp = 0.
   real:: bubble_dq = 0.
 
+! Vertical bounds for case(31) isolated anvil initialization in setperturb
+  real:: zbase = 8000.
+  real:: ztop  = 13000.
+
 ! Option for simple treatment of aerosol radiative effect in RRTMG by Tak Yamaguchi
 logical:: doradaerosimple = .false. 
 

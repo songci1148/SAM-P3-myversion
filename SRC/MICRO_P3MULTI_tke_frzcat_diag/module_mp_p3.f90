@@ -1612,7 +1612,7 @@ END subroutine p3_init
 
  SUBROUTINE p3_main(qc,nc,qr,nr,th_old,th,qv_old,qv,dt,qitot,qirim,nitot,birim,ssat,uzpl, &
                     pres,dzq,it,prt_liq,prt_sol,its,ite,kts,kte,nCat,diag_ze,diag_effc,   &
-                    diag_effi,diag_vmi,diag_di,diag_rhoi,n_diag_2d,diag_2d,n_diag_3d,     &
+                    diag_effi,diag_vmi,diag_vni,diag_di,diag_rhoi,n_diag_2d,diag_2d,n_diag_3d, & !CS added diag_vni
                     diag_3d,log_predictNc,typeDiags_ON,model,clbfact_dep,clbfact_sub,     &
                     debug_on,scpf_on,scpf_pfrac,scpf_resfact,SCF_out,prt_drzl,prt_rain,   &
                     prt_crys,prt_snow,prt_grpl,prt_pell,prt_hail,prt_sndp,qi_type,        &
@@ -1668,6 +1668,7 @@ END subroutine p3_init
  real, intent(out),   dimension(its:ite,kts:kte)      :: diag_effc  ! effective radius, cloud          m
  real, intent(out),   dimension(its:ite,kts:kte,nCat) :: diag_effi  ! effective radius, ice            m
  real, intent(out),   dimension(its:ite,kts:kte,nCat) :: diag_vmi   ! mass-weighted fall speed of ice  m s-1
+ real, intent(out),   dimension(its:ite,kts:kte,nCat) :: diag_vni   ! number-weighted fall speed of ice m s-1  !CS
  real, intent(out),   dimension(its:ite,kts:kte,nCat) :: diag_di    ! mean diameter of ice             m
  real, intent(out),   dimension(its:ite,kts:kte,nCat) :: diag_rhoi  ! bulk density of ice              kg m-1
 
@@ -4859,6 +4860,7 @@ endif
 
   ! note that reflectivity from lookup table is normalized, so we need to multiply by N
              diag_vmi(i,k,iice)   = f1pr02*rhofaci(i,k)
+            diag_vni(i,k,iice)   = f1pr01*rhofaci(i,k)  !CS number-weighted fall speed
              diag_effi(i,k,iice)  = f1pr06 ! units are in m
              diag_di(i,k,iice)    = f1pr15
              diag_rhoi(i,k,iice)  = f1pr16

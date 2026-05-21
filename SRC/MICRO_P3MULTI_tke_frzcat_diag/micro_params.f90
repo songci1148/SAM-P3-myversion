@@ -122,6 +122,7 @@ real,public :: ramp_min = 0.1 !INP ramp parameter ramp_min*NumCirrusINP = at low
 
    integer :: nmicro_proc
    integer, parameter :: nmicro_process_rates = 121 !43 + 18 totals + 60 pairwise ice-ice transfers
+   integer, parameter :: nmicro_process_rates_no_iceice = 43 !CS
    !no need for that: integer, parameter :: nmicro_process_rates_warm = 14
    character(len=9), dimension(nmicro_process_rates), parameter, public :: &
       micro_process_rate_names = (/ character(len=9) :: &
