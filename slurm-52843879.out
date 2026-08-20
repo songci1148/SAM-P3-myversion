@@ -1,0 +1,747 @@
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1833
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+n1563
+ number of MPI tasks:          64
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: No such file or directory
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014A902F5EEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014A90102A610  Unknown               Unknown  Unknown
+libc.so.6          000014A90102A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001529547EBEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000015295282A610  Unknown               Unknown  Unknown
+libc.so.6          000015295282A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014B5A14ECEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014B59F62A610  Unknown               Unknown  Unknown
+libc.so.6          000014B59F62A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000015451116EEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000015450F22A610  Unknown               Unknown  Unknown
+libc.so.6          000015450F22A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000147F9DCA3EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000147F9BE2A610  Unknown               Unknown  Unknown
+libc.so.6          0000147F9BE2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000151C45F18EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000151C4402A610  Unknown               Unknown  Unknown
+libc.so.6          0000151C4402A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014C94264EEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014C94082A610  Unknown               Unknown  Unknown
+libc.so.6          000014C94082A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000145579EACEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014557802A610  Unknown               Unknown  Unknown
+libc.so.6          000014557802A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001540D85FEEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001540D662A610  Unknown               Unknown  Unknown
+libc.so.6          00001540D662A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001468DE9F2EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001468DCA2A610  Unknown               Unknown  Unknown
+libc.so.6          00001468DCA2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014ADC728DEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014ADC542A610  Unknown               Unknown  Unknown
+libc.so.6          000014ADC542A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014A0947A6EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014A09282A610  Unknown               Unknown  Unknown
+libc.so.6          000014A09282A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001464CBE73EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001464CA02A610  Unknown               Unknown  Unknown
+libc.so.6          00001464CA02A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014BF13248EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014BF1142A610  Unknown               Unknown  Unknown
+libc.so.6          000014BF1142A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001476B7E6BEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001476B602A610  Unknown               Unknown  Unknown
+libc.so.6          00001476B602A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014E9EB815EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014E9E9A2A610  Unknown               Unknown  Unknown
+libc.so.6          000014E9E9A2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014725A2C8EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014725842A610  Unknown               Unknown  Unknown
+libc.so.6          000014725842A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001536E931FEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001536E742A610  Unknown               Unknown  Unknown
+libc.so.6          00001536E742A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014CCB4755EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014CCB282A610  Unknown               Unknown  Unknown
+libc.so.6          000014CCB282A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000154BA3EB9EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000154BA202A610  Unknown               Unknown  Unknown
+libc.so.6          0000154BA202A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014FEE635BEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014FEE442A610  Unknown               Unknown  Unknown
+libc.so.6          000014FEE442A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000145F24BB7EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000145F22C2A610  Unknown               Unknown  Unknown
+libc.so.6          0000145F22C2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014BCC5D01EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014BCC3E2A610  Unknown               Unknown  Unknown
+libc.so.6          000014BCC3E2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000015515CFB8EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000015515B02A610  Unknown               Unknown  Unknown
+libc.so.6          000015515B02A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000152953F8EEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000015295202A610  Unknown               Unknown  Unknown
+libc.so.6          000015295202A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000149309E1AEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014930802A610  Unknown               Unknown  Unknown
+libc.so.6          000014930802A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014ED80EEDEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014ED7F02A610  Unknown               Unknown  Unknown
+libc.so.6          000014ED7F02A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000015533D295EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000015533B42A610  Unknown               Unknown  Unknown
+libc.so.6          000015533B42A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000154B4699EEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000154B44A2A610  Unknown               Unknown  Unknown
+libc.so.6          0000154B44A2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000015283041EEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000015282E62A610  Unknown               Unknown  Unknown
+libc.so.6          000015282E62A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000150CF0C6CEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000150CEEE2A610  Unknown               Unknown  Unknown
+libc.so.6          0000150CEEE2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001516DC264EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001516DA42A610  Unknown               Unknown  Unknown
+libc.so.6          00001516DA42A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001538410A4EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000015383F22A610  Unknown               Unknown  Unknown
+libc.so.6          000015383F22A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001551C34C8EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001551C162A610  Unknown               Unknown  Unknown
+libc.so.6          00001551C162A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014CF86D9FEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014CF84E2A610  Unknown               Unknown  Unknown
+libc.so.6          000014CF84E2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014FB0472CEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014FB0282A610  Unknown               Unknown  Unknown
+libc.so.6          000014FB0282A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000147255B1CEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000147253C2A610  Unknown               Unknown  Unknown
+libc.so.6          0000147253C2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014FCC497DEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014FCC2A2A610  Unknown               Unknown  Unknown
+libc.so.6          000014FCC2A2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014E68B5A0EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014E68962A610  Unknown               Unknown  Unknown
+libc.so.6          000014E68962A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000145A8F4CEEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000145A8D62A610  Unknown               Unknown  Unknown
+libc.so.6          0000145A8D62A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001543D69F4EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001543D4A2A610  Unknown               Unknown  Unknown
+libc.so.6          00001543D4A2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000146E132D2EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000146E1142A610  Unknown               Unknown  Unknown
+libc.so.6          0000146E1142A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000146E460CEEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000146E4422A610  Unknown               Unknown  Unknown
+libc.so.6          0000146E4422A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014C3C719DEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014C3C522A610  Unknown               Unknown  Unknown
+libc.so.6          000014C3C522A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000152FDADB0EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000152FD8E2A610  Unknown               Unknown  Unknown
+libc.so.6          0000152FD8E2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014A68BB5BEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014A689C2A610  Unknown               Unknown  Unknown
+libc.so.6          000014A689C2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014AD319D9EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014AD2FA2A610  Unknown               Unknown  Unknown
+libc.so.6          000014AD2FA2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001510E942FEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001510E762A610  Unknown               Unknown  Unknown
+libc.so.6          00001510E762A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014992D9E9EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014992BA2A610  Unknown               Unknown  Unknown
+libc.so.6          000014992BA2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000015249693CEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000152494A2A610  Unknown               Unknown  Unknown
+libc.so.6          0000152494A2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014ADE0CBFEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014ADDEE2A610  Unknown               Unknown  Unknown
+libc.so.6          000014ADDEE2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001510C55A3EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001510C362A610  Unknown               Unknown  Unknown
+libc.so.6          00001510C362A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014C4B4761EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014C4B282A610  Unknown               Unknown  Unknown
+libc.so.6          000014C4B282A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014E2D6359EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014E2D442A610  Unknown               Unknown  Unknown
+libc.so.6          000014E2D442A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014C4E04A7EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014C4DE62A610  Unknown               Unknown  Unknown
+libc.so.6          000014C4DE62A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014D6C5DC4EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014D6C3E2A610  Unknown               Unknown  Unknown
+libc.so.6          000014D6C3E2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000015153D610EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000015153B82A610  Unknown               Unknown  Unknown
+libc.so.6          000015153B82A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014A50ED6DEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014A50CE2A610  Unknown               Unknown  Unknown
+libc.so.6          000014A50CE2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001491976ECEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014919582A610  Unknown               Unknown  Unknown
+libc.so.6          000014919582A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014F2DF6BFEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014F2DD82A610  Unknown               Unknown  Unknown
+libc.so.6          000014F2DD82A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001475CED40EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          00001475CCE2A610  Unknown               Unknown  Unknown
+libc.so.6          00001475CCE2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   000014582CCFAEE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          000014582AE2A610  Unknown               Unknown  Unknown
+libc.so.6          000014582AE2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   0000148A4A9B8EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000148A48A2A610  Unknown               Unknown  Unknown
+libc.so.6          0000148A48A2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+libc.so.6          000014FCC2A3FC30  Unknown               Unknown  Unknown
+libifcoremt.so.5   000014FCC4971D33  for__signal_handl     Unknown  Unknown
+libc.so.6          000014FCC2A3FC30  Unknown               Unknown  Unknown
+
+Stack trace terminated abnormally.
+           **************************************************
+           **************************************************
+           *                                                *
+           *      *****          **       ***          **   *
+           *    ***   ***       ****      ****       ****   *
+           *   ***     ***     *** ***    *****     *****   *
+           *    ***           ***   ***   *** **   ** ***   *
+           *       ***       ***     ***  ***  ** **  ***   *
+           *          ***    ***     ***  ***   ***   ***   *
+           *   ***     ***   ***********  ***         ***   *
+           *    ***   ***    ***     ***  ***         ***   *
+           *      *****      ***     ***  ***         ***   *
+           *                                                *
+           **************************************************
+           **************************************************
+           ***       System for Atmospheric Modeling      ***
+           ***                    SAM                     ***
+                     Version 6.10.9 (Feb 2016)  
+           **************************************************
+           ***     (C) Marat Khairoutdinov                ***
+           *** School of Marine and Atmospheric Sciences  ***
+           ***       Stony Brook University               ***
+           **************************************************
+           ***       The model can be used only with      ***
+           ***         permission from the author!        ***
+           ***       No transfer to any third party       ***
+           ***                is allowed!                 ***
+           **************************************************
+           **************************************************
+           ***       DATE 05/19/26 TIME 13:07:20          ***
+           **************************************************
+ 
+forrtl: No such file or directory
+forrtl: severe (29): file not found, unit 55, file /home/x_cison/SAM/SAM-P3-multi_ci/restore_version/./buuble/prm
+Image              PC                Routine            Line        Source             
+libifcoremt.so.5   00001533079D5EE0  for_open              Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000006BD3F1  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  0000000000478515  Unknown               Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004068BD  Unknown               Unknown  Unknown
+libc.so.6          0000153305A2A610  Unknown               Unknown  Unknown
+libc.so.6          0000153305A2A6C0  __libc_start_main     Unknown  Unknown
+SAM_ADV_UM5_SGS_T  00000000004067D5  Unknown               Unknown  Unknown
+srun: error: n1563: tasks 0-31: Exited with exit code 29
+srun: Terminating StepId=52843879.0
+srun: error: n1833: tasks 32-63: Exited with exit code 29

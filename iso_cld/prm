@@ -39,15 +39,17 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
  nrestart = 0,       !1 if you start from a restart file
  nrestart_skip=5,    !write restart file every n+1th time a stat file computed
 
- caseid ='isocld_P3_Nc0_100_built',
+ caseid ='isocld_P3_305SST_FAT_80SH8500m_2_updated',
 
  CEM = .true.,
  OCEAN = .true.,
 
  ocean_type = 0, ! ocean_type=1 is sinusoidal SST in x direction
- tabs_s = 303.15,  ! when ocean_type is 1 or 2, this is the mean SST
+ tabs_s = 305,  ! when ocean_type is 1 or 2, this is the mean SST
 
  perturb_type   = 31, ! isolated cloud case
+ zbase = 10500.0, ! base of the cloud in m 8500, 9500, 10500 for SST 295, 300, 305K respectively
+ ztop = 13500.0, ! top of the cloud in m + 3km from base
 
  dosgs          = .true.,
  dodamping      = .true.,
@@ -110,7 +112,7 @@ nelapsemin = 700,                       !length of the simulation in minutes;ada
 
  day0=0.0,
 
- nstop 		= 1440, !12 hr for timestep of 30 sec
+ nstop 		= 2880, !12 hr for timestep of 30 sec
  nprint 	= 4, ! 4 x 30 = 120 s print output every 2 min
  nstat 		= 60, ! 30 min
  nstatfrq 	= 15,
